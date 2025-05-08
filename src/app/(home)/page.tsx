@@ -1,5 +1,5 @@
 import Discovery from "../components/Discovery";
-import Donation from "../components/donation";
+import Donation from "../components/Donation";
 import Hero from "../components/Hero";
 import MSNewsSection from "../components/MSNewsSection";
 import Platform from "../components/Platform";
@@ -18,7 +18,7 @@ export default function Home() {
 
       <MSNewsSection />
 
-      <Donation />
+      <Donation/>
     </div>
   );
 }
