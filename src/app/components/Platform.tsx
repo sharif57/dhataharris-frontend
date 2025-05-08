@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Platform() {
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-20 h-screen mt-14">
+    <section className="container mx-auto px-4 sm:px-6 lg:px-20  mt-14">
       <div className="">
         <div className="lg:flex justify-between gap- items-center">
           {/* Founder Image */}
