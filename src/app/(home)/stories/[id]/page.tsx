@@ -7,7 +7,7 @@ export default function DoctorProfilePage() {
       <div className="bg-white rounded-3xl shadow-md max-w-5xl w-full p-6 md:p-8">
         <div className="">
           {/* Profile Image */}
-          <div className="flex  items-center gap-6 ">
+          <div className="lg:flex  items-center gap-6 ">
             <Image
               src="/user.png"
               alt="Dr. Jane Nicholson"

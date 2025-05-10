@@ -103,15 +103,16 @@ export default function MobileMenu({ isOpen, onClose, onDonateClick }: MobileMen
         >
           News
         </Link>
-        <Link
-          href="/donation"
+        <button
+          // href="/donation"
+          
           onClick={onClose}
           className={`text-[#727A7C] text-lg ${
             pathname === "/donation" ? "font-bold" : ""
           }`}
         >
           Donation
-        </Link>
+        </button>
         <Link
           href="/stories"
           onClick={onClose}
