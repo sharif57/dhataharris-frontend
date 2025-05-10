@@ -6,7 +6,6 @@ import { useState, useRef, useEffect } from "react";
 import ChatSidebar from "@/app/components/ChatSidebar";
 import ChatMessage from "@/app/components/ChatMessage";
 
-
 interface Message {
   role: "user" | "assistant";
   content: string;
@@ -16,7 +15,8 @@ export default function Home() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hello! Ask me about business growth, leadership, or strategy",
+      content:
+        "Stronger Minds, Better Lives: Cultivating Resilience and Self-Care in a Chaotic World",
     },
   ]);
   const [inputValue, setInputValue] = useState("");
@@ -117,8 +117,9 @@ export default function Home() {
         {showWelcomeMessage ? (
           <div className="flex-1 flex items-center justify-center p-4">
             <div className="text-center">
-              <p className="lg:text-[33px]  text-xl text-black font-medium font-roboto">
-                Hello! Ask me about business growth, leadership, or strategy
+              <p className="lg:text-[33px] leading-snug  text-xl text-[#760C2A] font-medium font-roboto">
+                Stronger Minds, Better Lives: Cultivating Resilience and
+                Self-Care in a Chaotic World{" "}
               </p>
             </div>
           </div>

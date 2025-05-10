@@ -16,7 +16,7 @@ export default function MSArticlePage() {
         </div>
 
         {/* Article Content */}
-        <div className=" py-4">
+        <div className=" py-4 text-justify">
           <h1 className="text-xl md:text-4xl font-semibold underline text-gray-900 mb-4">
             What Does The 2025 Spring Statement Mean For People MS?
           </h1>
