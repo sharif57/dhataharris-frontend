@@ -17,6 +17,25 @@ body {
   }
 }
 
+/* styles/globals.css */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #760C2A;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
