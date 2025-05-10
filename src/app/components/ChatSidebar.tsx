@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ChatSidebarProps {
   isMobileMenuOpen: boolean;
@@ -310,7 +311,7 @@ export default function ChatSidebar({
           </div>
 
           {/* User Profile */}
-          <div className="p-4 border-t border-[#006A82] flex items-center">
+          <Link href={'my-profile'} className="p-4 border-t border-[#006A82] flex items-center">
             <div className="w-8 h-8 rounded-full bg-gray-400 mr-3 overflow-hidden">
               <Image
                 src="/placeholder.svg?height=32&width=32"
@@ -321,7 +322,7 @@ export default function ChatSidebar({
               />
             </div>
             <span className="text-sm">Marvin McKinney</span>
-          </div>
+          </Link>
         </div>
       </div>
     </>
