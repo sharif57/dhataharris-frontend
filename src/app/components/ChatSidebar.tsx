@@ -1,8 +1,5 @@
 "use client";
-
-import { useState } from "react";
 import Image from "next/image";
-import { toast } from "sonner";
 
 interface ChatSidebarProps {
   isMobileMenuOpen: boolean;
@@ -16,7 +13,6 @@ export default function ChatSidebar({
   
 }: ChatSidebarProps) {
   //   const [activeSection, setActiveSection] = useState("today")
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
   const chatGroups = {
     today: Array(8)
@@ -113,7 +109,7 @@ export default function ChatSidebar({
                     <button className="w-full text-left py-2 px-3 rounded hover:bg-[#760C2A] hover:text-white transition-colors text-sm flex items-center justify-between">
                       <span>{chat}</span>
                       <div className="relative">
-                        <button
+                        {/* <button
                           onClick={(e) => {
                             e.stopPropagation();
                             setActiveMenu(
@@ -139,9 +135,9 @@ export default function ChatSidebar({
                             <circle cx="19" cy="12" r="1"></circle>
                             <circle cx="5" cy="12" r="1"></circle>
                           </svg>
-                        </button>
+                        </button> */}
 
-                        {activeMenu === `today-${index}` && (
+                        {/* {activeMenu === `today-${index}` && (
                           <div className="absolute right-0 mt-1 w-32 bg-[#004050] rounded-md shadow-lg z-10 py-1">
                             <button
                               onClick={(e) => {
@@ -170,7 +166,7 @@ export default function ChatSidebar({
                               Delete
                             </button>
                           </div>
-                        )}
+                        )} */}
                       </div>
                     </button>
                   </li>
@@ -183,10 +179,10 @@ export default function ChatSidebar({
               <ul className="space-y-1">
                 {chatGroups.yesterday.map((chat, index) => (
                   <li key={`yesterday-${index}`} className="relative group">
-                    <button className="w-full text-left py-2 px-3 rounded hover:bg-[#005163] transition-colors text-sm flex items-center justify-between">
-                      <span>{chat}</span>
+                    <button className="w-full text-left py-2 px-3 rounded hover:bg-[#760C2A] hover:text-white transition-colors text-sm flex items-center justify-between">
+                    <span>{chat}</span>
                       <div className="relative">
-                        <button
+                        {/* <button
                           onClick={(e) => {
                             e.stopPropagation();
                             setActiveMenu(
@@ -212,9 +208,9 @@ export default function ChatSidebar({
                             <circle cx="19" cy="12" r="1"></circle>
                             <circle cx="5" cy="12" r="1"></circle>
                           </svg>
-                        </button>
+                        </button> */}
 
-                        {activeMenu === `yesterday-${index}` && (
+                        {/* {activeMenu === `yesterday-${index}` && (
                           <div className="absolute right-0 mt-1 w-32 bg-[#004050] rounded-md shadow-lg z-10 py-1">
                             <button
                               onClick={(e) => {
@@ -237,7 +233,7 @@ export default function ChatSidebar({
                               Delete
                             </button>
                           </div>
-                        )}
+                        )} */}
                       </div>
                     </button>
                   </li>
@@ -250,10 +246,10 @@ export default function ChatSidebar({
               <ul className="space-y-1">
                 {chatGroups.previous.map((chat, index) => (
                   <li key={`previous-${index}`} className="relative group">
-                    <button className="w-full text-left py-2 px-3 rounded hover:bg-[#005163] transition-colors text-sm flex items-center justify-between">
-                      <span>{chat}</span>
+                    <button className="w-full text-left py-2 px-3 rounded hover:bg-[#760C2A] hover:text-white transition-colors text-sm flex items-center justify-between">
+                    <span>{chat}</span>
                       <div className="relative">
-                        <button
+                        {/* <button
                           onClick={(e) => {
                             e.stopPropagation();
                             setActiveMenu(
@@ -279,9 +275,9 @@ export default function ChatSidebar({
                             <circle cx="19" cy="12" r="1"></circle>
                             <circle cx="5" cy="12" r="1"></circle>
                           </svg>
-                        </button>
+                        </button> */}
 
-                        {activeMenu === `previous-${index}` && (
+                        {/* {activeMenu === `previous-${index}` && (
                           <div className="absolute right-0 mt-1 w-32 bg-[#004050] rounded-md shadow-lg z-10 py-1">
                             <button
                               onClick={(e) => {
@@ -304,7 +300,7 @@ export default function ChatSidebar({
                               Delete
                             </button>
                           </div>
-                        )}
+                        )} */}
                       </div>
                     </button>
                   </li>
