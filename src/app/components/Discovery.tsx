@@ -1,10 +1,4 @@
-// import React from 'react'
 
-// export default function Discovery() {
-//   return (
-//     <div>Discovery</div>
-//   )
-// }
 "use client"
 
 import { useEffect, useState } from "react"
