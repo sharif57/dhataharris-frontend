@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Donation() {
   return (
-    <div className="bg-[#FFFAFB]  p-6 lg:p-0">
+    <div id="donation-section" className="bg-[#FFFAFB]  p-6 lg:p-0">
       <div className="lg:flex justify-between pt-16 pb-16 items-center max-w-5xl mx-auto ">
         <div>
           <Image
