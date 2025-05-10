@@ -5,9 +5,7 @@ import type React from "react";
 import { useState, useRef, useEffect } from "react";
 import ChatSidebar from "@/app/components/ChatSidebar";
 import ChatMessage from "@/app/components/ChatMessage";
-// import ChatSidebar from "@/components/chat/ChatSidebar";
-// import ChatMessage from "@/components/chat/ChatMessage";
-// import SearchModal from "@/components/chat/SearchModal";
+
 
 interface Message {
   role: "user" | "assistant";
@@ -22,7 +20,7 @@ export default function Home() {
     },
   ]);
   const [inputValue, setInputValue] = useState("");
-  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const [, setIsSearchModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showWelcomeMessage, setShowWelcomeMessage] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);

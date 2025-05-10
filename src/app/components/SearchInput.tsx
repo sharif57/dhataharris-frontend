@@ -1,16 +1,19 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import type React from "react";
 
 import { useState } from "react";
 
 export default function SearchInput() {
+  const router = useRouter();
 
   const [query, setQuery] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle search query submission
+    router.push(`/chat?q=${query}`);
     console.log("Search query:", query);
   };
 

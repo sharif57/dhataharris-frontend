@@ -1,96 +1,103 @@
-"use client"
+"use client";
 
-import { useState, useRef, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft } from 'lucide-react'
-import Link from "next/link"
+import { useState, useRef, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+
+import { useRouter } from "next/navigation";
 
 export default function VerifyEmailPage() {
-  const [otp, setOtp] = useState<string[]>(["1", "", "", "", "", ""])
-  const [isVerifying, setIsVerifying] = useState(false)
-  const inputRefs = useRef<(HTMLInputElement | null)[]>([])
+  const router = useRouter();
+
+  const [otp, setOtp] = useState<string[]>(["1", "", "", "", "", ""]);
+  const [isVerifying, setIsVerifying] = useState(false);
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   // Initialize refs array
   useEffect(() => {
-    inputRefs.current = inputRefs.current.slice(0, 6)
-  }, [])
+    inputRefs.current = inputRefs.current.slice(0, 6);
+  }, []);
 
   const handleChange = (index: number, value: string) => {
     // Only allow numbers
-    if (value && !/^\d+$/.test(value)) return
+    if (value && !/^\d+$/.test(value)) return;
 
-    const newOtp = [...otp]
+    const newOtp = [...otp];
     // Take only the last character if multiple characters are pasted
-    newOtp[index] = value.slice(-1)
-    setOtp(newOtp)
+    newOtp[index] = value.slice(-1);
+    setOtp(newOtp);
 
     // Move to next input if current input is filled
     if (value && index < 5) {
-      inputRefs.current[index + 1]?.focus()
+      inputRefs.current[index + 1]?.focus();
     }
-  }
+  };
 
-  const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (
+    index: number,
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
     // Move to previous input on backspace if current input is empty
     if (e.key === "Backspace" && !otp[index] && index > 0) {
-      inputRefs.current[index - 1]?.focus()
+      inputRefs.current[index - 1]?.focus();
     }
-    
+
     // Handle arrow keys
     if (e.key === "ArrowLeft" && index > 0) {
-      inputRefs.current[index - 1]?.focus()
+      inputRefs.current[index - 1]?.focus();
     }
     if (e.key === "ArrowRight" && index < 5) {
-      inputRefs.current[index + 1]?.focus()
+      inputRefs.current[index + 1]?.focus();
     }
-  }
+  };
 
   const handlePaste = (e: React.ClipboardEvent) => {
-    e.preventDefault()
-    const pastedData = e.clipboardData.getData("text/plain").trim()
-    
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData("text/plain").trim();
+
     // Check if pasted content is a 6-digit number
     if (/^\d{6}$/.test(pastedData)) {
-      const digits = pastedData.split("")
-      setOtp(digits)
-      
+      const digits = pastedData.split("");
+      setOtp(digits);
+
       // Focus the last input
-      inputRefs.current[5]?.focus()
+      inputRefs.current[5]?.focus();
     }
-  }
+  };
 
   const handleVerify = async () => {
-    const otpValue = otp.join("")
-    
+    const otpValue = otp.join("");
+
     // Check if OTP is complete
     if (otpValue.length !== 6) {
-      alert("Please enter the complete 6-digit code")
-      return
+      alert("Please enter the complete 6-digit code");
+      return;
     }
-    
-    setIsVerifying(true)
-    
+
+    setIsVerifying(true);
+
     try {
       // Simulate API call to verify OTP
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      console.log("Verifying OTP:", otpValue)
-      alert("Email verified successfully!")
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      console.log("Verifying OTP:", otpValue);
+      alert("Email verified successfully!");
+      router.push("/reset-password");
       // Redirect to next page or show success message
     } catch (error) {
-      console.error("Verification failed:", error)
-      alert("Verification failed. Please try again.")
+      console.error("Verification failed:", error);
+      alert("Verification failed. Please try again.");
     } finally {
-      setIsVerifying(false)
+      setIsVerifying(false);
     }
-  }
+  };
 
   return (
     <main className="min-h-screen bg-[#760C2A] flex items-center justify-center p-4">
       <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 md:p-8">
         {/* Header */}
         <div className="flex items-center mb-8">
-         
-          <h1 className="text-lg font-medium text-center flex-1 pr-5">Verify Email</h1>
+          <h1 className="text-lg font-medium text-center flex-1 pr-5">
+            Verify Email
+          </h1>
         </div>
 
         {/* OTP Input Fields */}
@@ -98,7 +105,9 @@ export default function VerifyEmailPage() {
           {otp.map((digit, index) => (
             <input
               key={index}
-              ref={(el) => { inputRefs.current[index] = el }}
+              ref={(el) => {
+                inputRefs.current[index] = el;
+              }}
               type="text"
               inputMode="numeric"
               maxLength={1}
@@ -126,5 +135,5 @@ export default function VerifyEmailPage() {
         </p>
       </div>
     </main>
-  )
+  );
 }
