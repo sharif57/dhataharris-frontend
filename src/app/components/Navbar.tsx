@@ -4,10 +4,25 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
+import { usePathname } from "next/navigation";
 // import MobileMenu from "@/components/mobile-menu"
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  if (pathname === '/sign-in') {
+    return null;
+  }
+  if (pathname === '/forgot-password') {
+    return null;
+  }
+  if (pathname === '/signup') {
+    return null;
+  }
+  if (pathname === '/verify-email') {
+    return null;
+  }
 
   return (
     <>
@@ -46,7 +61,7 @@ export default function Navbar() {
               Donation
             </Link>
             <Link
-              href="/user-story"
+              href="/stories"
               className="text-[#727A7C] hover:text-gray-900"
             >
               User Story

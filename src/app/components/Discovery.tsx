@@ -1,30 +1,29 @@
+"use client";
 
-"use client"
-
-import { useEffect, useState } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 export default function Discovery() {
-  const [, setIsMobile] = useState(false)
+  const [, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
+      setIsMobile(window.innerWidth < 768);
+    };
 
     // Set initial value
-    handleResize()
+    handleResize();
 
     // Add event listener
-    window.addEventListener("resize", handleResize)
+    window.addEventListener("resize", handleResize);
 
     // Clean up
     return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [])
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <section className="w-full mt-16 py-12 md:py-16 mt">
@@ -33,21 +32,30 @@ export default function Discovery() {
           {/* Journey Text Content */}
           <div className="space-y-6 order-2 md:order-1">
             <h2 className="text-3xl md:text-4xl font-bold text-[#2D3748] leading-tight">
-              Dhata Harris: My MS Journey—Illness, <span className="text-[#760C2A]">Discovery</span>, And Recovery
+              Dhata Harris: My MS Journey—Illness,{" "}
+              <span className="text-[#760C2A]">Discovery</span>, And Recovery
             </h2>
 
-            <div className="space-y-4 text-[#2D3748] text-base leading-relaxed">
+            <div className="space-y-4 text-[#2D3748] text-base leading-relaxed text-justify">
               <p>
-                Upon diagnosis, I was never accepting of the fact that I had a disease with no known cause or cure.
-                There was &#34;something&ldquo; that was killing me that came from &ldquo;somewhere&#34;. As a career Internal Auditor, my
-                analytical mind is geared towards identifying the root cause of &#34;everything&ldquo;, so I accepted the
-                challenge to audit MS. A diagnosis is like an audit finding. As part of our profession, we use the 5 C&#39;s
-                to document a finding.
+                Upon diagnosis, I was never accepting of the fact that I had a
+                disease with no known cause or cure. There was
+                &#34;something&ldquo; that was killing me that came from
+                &ldquo;somewhere&#34;. As a career Internal Auditor, my
+                analytical mind is geared towards identifying the root cause of
+                &#34;everything&ldquo;, so I accepted the challenge to audit MS.
+                A diagnosis is like an audit finding. As part of our profession,
+                we use the 5 C&#39;s to document a finding.
               </p>
 
-              <p>Criteria: What is the expectation? Think about a speed limit.</p>
+              <p>
+                Criteria: What is the expectation? Think about a speed limit.
+              </p>
 
-              <p>Condition: What was found versus the expectation. Think about going above the posted speed limit.</p>
+              <p>
+                Condition: What was found versus the expectation. Think about
+                going above the posted speed limit.
+              </p>
             </div>
 
             <Link
@@ -74,5 +82,5 @@ export default function Discovery() {
         </div>
       </div>
     </section>
-  )
+  );
 }

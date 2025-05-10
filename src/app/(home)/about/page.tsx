@@ -24,7 +24,7 @@ export default function AboutPage() {
               About Me - <span className="text-[#760C2A]">Dhata Harris</span>
             </h1>
 
-            <div className="space-y-4 text-sm md:text-xl text-[#2C383C] font-normal">
+            <div className="space-y-4 text-sm md:text-xl text-[#2C383C] font-normal text-justify">
               <p>
                 My name is Dhata Harris. I am the founder of The Enitiative
                 Group Inc., an Atlanta-based nonprofit on a mission to eradicate
@@ -53,7 +53,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="space-y-4 text-sm md:text-base text-[#2C383C] font-normal mt-8">
+        <div className="space-y-4 text-sm md:text-base text-[#2C383C] font-normal mt-8 text-justify">
           <p>
             But it wasn’t until I started connecting these events into a
             timeline—and matching them with scientific research—that the full
@@ -86,12 +86,13 @@ export default function AboutPage() {
           </p>
           <p>Now, I’ve turned that research into purpose.</p>
           <p>
-            This website is more than my story—it&#39;s a platform for others living
-            with MS (or conditions like it) to find answers, to explore
+            This website is more than my story—it&#39;s a platform for others
+            living with MS (or conditions like it) to find answers, to explore
             alternate causes, and to map their own pathway toward healing.
-            Whether you&#39;re a patient, a caregiver, or a medical professional, my
-            hope is that my experience sheds light on how complex, unique, and
-            treatable MS can be—when we’re willing to look beyond the surface.
+            Whether you&#39;re a patient, a caregiver, or a medical
+            professional, my hope is that my experience sheds light on how
+            complex, unique, and treatable MS can be—when we’re willing to look
+            beyond the surface.
           </p>
           <p>
             If you’ve ever been told, “We don’t know what’s causing your

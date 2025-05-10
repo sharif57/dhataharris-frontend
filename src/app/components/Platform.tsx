@@ -26,7 +26,7 @@ export default function Platform() {
               Face behind this <span className="text-[#760C2A]">platform</span>
             </h2>
 
-            <div className="space-y-4 text-[#2D3748] text-base   leading-relaxed">
+            <div className="space-y-4 text-[#2D3748] text-base   leading-relaxed text-justify">
               <p>
                 My Name Is Dhata Harris. I Am The Founder Of The Enitiative
                 Group Inc., An Atlanta-Based Nonprofit On A Mission To Eradicate

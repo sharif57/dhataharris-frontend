@@ -16,7 +16,7 @@ const StoryCard = ({
   name?: string
   title?: string
 }) => (
-  <div className="bg-white rounded-2xl p-4 shadow-sm">
+  <div className="bg-white rounded-2xl p-4 shadow-sm text-justify">
     <div className="flex flex-col items-start">
       <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-200 mb-3">
         <Image
@@ -78,8 +78,8 @@ export default function StoriesSection() {
     }
   }, [isModalOpen])
 
-  return (
-    <section className="w-full bg-[#FFEFF3] py-12">
+  return ( 
+    <section className="w-full bg-[#FFEFF3] py-12 text-justify">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-6">
           <h2 className="lg:text-[48px] text-2xl font-bold text-[#2D3748]">Other&lsquo;s Stories</h2>

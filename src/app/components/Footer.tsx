@@ -1,8 +1,26 @@
+'use client';
 import Image from "next/image";
 import Link from "next/link";
 import { Github, Linkedin, Twitter } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (pathname === '/sign-in') {
+    return null;
+  }
+  if (pathname === '/forgot-password') {
+    return null;
+  }
+  if (pathname === '/signup') {
+    return null;
+  }
+  if (pathname === '/verify-email') {
+    return null;
+  }
+
+
   return (
     <footer className="w-full  bg-white  py-8">
       <div className="container mx-auto px-4">

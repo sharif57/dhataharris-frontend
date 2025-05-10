@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function DoctorProfilePage() {
   return (
-    <main className="min-h-screen bg-[#ffeff3] flex items-center justify-center p-4 md:p-8">
+    <main className="min-h-screen bg-[#ffeff3] flex items-center justify-center p-4 md:p-8 text-justify">
       <div className="bg-white rounded-3xl shadow-md max-w-5xl w-full p-6 md:p-8">
         <div className="">
           {/* Profile Image */}

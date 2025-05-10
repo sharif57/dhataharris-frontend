@@ -3,7 +3,7 @@ import React from "react";
 
 export default function page() {
   return (
-    <div className="bg-white px-4">
+    <div className="bg-white px-4 text-justify">
       <section className="w-full pt-16 py-12 md:py-10 mt ">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center ">
