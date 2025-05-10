@@ -239,9 +239,102 @@ export default function page() {
 
                 <li>No relapses.</li>
                 <li>No fatigue, weakness, or tingling.</li>
-                <li>My cognition sharpened.To this day, I’ve remained symptom-free for over 8 years.</li>
+                <li>
+                  My cognition sharpened.To this day, I’ve remained symptom-free
+                  for over 8 years.
+                </li>
               </ul>
             </div>
+          </div>
+          <div className="mt-[100px]">
+            <main className=" py-8  md:py-12   ">
+              {/* Important Clues and Questions */}
+              <section className="mb-16">
+                <h2 className="text-2xl md:text-[40px] font-bold mb-4">
+                  Important Clues and Questions{" "}
+                  <span className="text-[#760C2A]">for Researchers</span>
+                </h2>
+                <ul className="list-disc pl-6 space-y-2">
+                  <li>
+                    Could Candida and H. pylori infections be early triggers for
+                    MS?
+                  </li>
+                  <li>
+                    How does infection of the vagus or trigeminal nerve affect
+                    neurodegeneration?
+                  </li>
+                  <li>
+                    Why did surgery bring remission—and could it help others?
+                  </li>
+                  <li>
+                    What is the role of gadolinium (a fungal toxin I tested
+                    positive for) in mimicking MS symptoms?
+                  </li>
+                </ul>
+              </section>
+
+              {/* Key Documents Available */}
+              <section className="mb-16">
+                <h2 className="text-2xl md:text-[40px] font-bold mb-4">
+                  Key Documents Available{" "}
+                  <span className="text-[#760C2A]">for Review</span>
+                </h2>
+                <p className="mb-4">
+                  You&#39;ll find some of my medical records and testing results
+                  here as evidence, including:
+                </p>
+
+                <ul className="list-disc pl-10 space-y-2">
+                  <li>
+                    Allergy panel results showing suppressed immune response to
+                    Candida
+                    <ul className="list-disc pl-6 mt-1">
+                      <li>
+                        Neurologist&lsquo;s letter confirming MS onset in 2005
+                      </li>
+                      <li>MRI and spinal tap confirming MS</li>
+                      <li>
+                        Timeline of events including dental surgery and gastric
+                        sleeve
+                      </li>
+                      <li>
+                        H. pylori and Candida-related medical literature that
+                        supports my case
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </section>
+
+              {/* Conclusion */}
+              <section>
+                <h2 className="text-2xl md:text-[40px] font-bold mb-4">
+                  Conclusion: A Personal Journey{" "}
+                  <span className="text-[#760C2A]">With a Purpose</span>
+                </h2>
+                <p className="mb-4">
+                  My story isn&#39;t just about me—it&#39;s about helping others
+                  with MS or similar symptoms recognize the full picture.
+                  <br />
+                  MS isn&lsquo;t always just genetic. It can be triggered or
+                  worsened by:
+                </p>
+
+                <ul className="list-disc pl-6 space-y-2 mb-4">
+                  <li>Infections</li>
+                  <li>Environmental toxins like mold and gliotoxin</li>
+                  <li>Poor gut health</li>
+                  <li>Immune suppression or overactivation</li>
+                </ul>
+
+                <p className="mb-4">
+                  If we map the different ways people arrive at MS, we may one
+                  day offer truly personalized and effective treatments.
+                  <br />
+                  Let&lsquo;s uncover those patterns—together.
+                </p>
+              </section>
+            </main>
           </div>
         </div>
       </section>
