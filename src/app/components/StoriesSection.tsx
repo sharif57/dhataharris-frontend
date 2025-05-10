@@ -11,12 +11,14 @@ const StoryCard = ({
   imageSrc,
   name = "Dr. Jane Nicholson",
   title = "Leading Diagnostic Doctor",
+  id = "1",
 }: {
   imageSrc: string
   name?: string
   title?: string
+  id?: string
 }) => (
-  <div className="bg-white rounded-2xl p-4 shadow-sm text-justify">
+  <Link href={`/stories/${id}`} className="bg-white rounded-2xl p-4 shadow-sm text-justify">
     <div className="flex flex-col items-start">
       <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-200 mb-3">
         <Image
@@ -32,11 +34,11 @@ const StoryCard = ({
       <p className="text-[#4A5568] text-xs leading-relaxed mb-2">
       I was 29, chasing dreams and designing a future I could touch with my own hands, when everything changed. It started with a strange numbness in my fingers, then a crushing fatigue that no amount of sleep could cure...more
       </p>
-      <Link href="#" className="text-xs text-[#8B1D3F] hover:underline">
+      {/* <Link href="#" className="text-xs text-[#8B1D3F] hover:underline">
         more
-      </Link>
+      </Link> */}
     </div>
-  </div>
+  </Link>
 )
 
 export default function StoriesSection() {
@@ -99,14 +101,12 @@ export default function StoriesSection() {
             </Link>
           </div>
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {profiles.map((profile, index) => (
-            <StoryCard key={index} imageSrc={profile} />
+            <StoryCard key={index} imageSrc={profile} id={index.toString()} />
           ))}
         </div>
       </div>
-
       <CreateBlogModal isOpen={isModalOpen} onClose={closeModal} />
     </section>
   )

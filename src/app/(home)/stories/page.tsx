@@ -34,9 +34,9 @@ const StoryCard = ({
         in my fingers, then a crushing fatigue that no amount of sleep could
         cure...more
       </p>
-      <Link href={`/stories/${id}`} className="text-xs text-[#8B1D3F] hover:underline">
+      {/* <Link href={`/stories/${id}`} className="text-xs text-[#8B1D3F] hover:underline">
         more
-      </Link>
+      </Link> */}
     </div>
   </Link>
 );
