@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { Github, Linkedin, Twitter } from "lucide-react";
@@ -7,19 +7,21 @@ import { usePathname } from "next/navigation";
 export default function Footer() {
   const pathname = usePathname();
 
-  if (pathname === '/sign-in') {
+  if (pathname === "/sign-in") {
     return null;
   }
-  if (pathname === '/forgot-password') {
+  if (pathname === "/forgot-password") {
     return null;
   }
-  if (pathname === '/signup') {
+  if (pathname === "/signup") {
     return null;
   }
-  if (pathname === '/verify-email') {
+  if (pathname === "/verify-email") {
     return null;
   }
-
+  if (pathname === "/reset-password") {
+    return null;
+  }
 
   return (
     <footer className="w-full  bg-white  py-8">
@@ -35,7 +37,6 @@ export default function Footer() {
                 height={100}
                 className="h-auto"
               />
-              
             </div>
             <div className="flex items-center gap-4 mt-2">
               <Link href="#" aria-label="LinkedIn">
@@ -102,12 +103,12 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row justify-start  gap-10 items-start sm:items-center mt-12 pt-4 text-sm text-gray-600">
           <p>© {new Date().getFullYear()} Enitiative Group</p>
           {/* <div className="flex gap-6 mt-2 sm:mt-0"> */}
-            <Link href="#" className="hover:text-gray-900">
-              Privacy
-            </Link>
-            <Link href="#" className="hover:text-gray-900">
-              Terms and Conditions
-            </Link>
+          <Link href="#" className="hover:text-gray-900">
+            Privacy
+          </Link>
+          <Link href="#" className="hover:text-gray-900">
+            Terms and Conditions
+          </Link>
           {/* </div> */}
         </div>
       </div>

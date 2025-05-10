@@ -23,6 +23,9 @@ export default function Navbar() {
   if (pathname === '/verify-email') {
     return null;
   }
+  if (pathname === '/reset-password') {
+    return null;
+  }
 
   return (
     <>
