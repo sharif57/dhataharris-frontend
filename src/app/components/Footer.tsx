@@ -55,10 +55,10 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h3 className="font-medium">News</h3>
             <div className="flex flex-col gap-2">
-              <Link href="#" className="text-gray-600 hover:text-gray-900">
+              <Link href="/stories" className="text-gray-600 hover:text-gray-900">
                 Blog
               </Link>
-              <Link href="#" className="text-gray-600 hover:text-gray-900">
+              <Link href="/news" className="text-gray-600 hover:text-gray-900">
                 Ms News
               </Link>
             </div>
@@ -68,13 +68,13 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h3 className="font-medium">Quick Link</h3>
             <div className="flex flex-col gap-2">
-              <Link href="#" className="text-gray-600 hover:text-gray-900">
+              <Link href="/privacy" className="text-gray-600 hover:text-gray-900">
                 Privacy & Policy
               </Link>
-              <Link href="#" className="text-gray-600 hover:text-gray-900">
+              <Link href="/privacy" className="text-gray-600 hover:text-gray-900">
                 Trust & Safety
               </Link>
-              <Link href="#" className="text-gray-600 hover:text-gray-900">
+              <Link href="/privacy" className="text-gray-600 hover:text-gray-900">
                 Terms & Conditions
               </Link>
             </div>
@@ -103,10 +103,10 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row justify-start  gap-10 items-start sm:items-center mt-12 pt-4 text-sm text-gray-600">
           <p>© {new Date().getFullYear()} Enitiative Group</p>
           {/* <div className="flex gap-6 mt-2 sm:mt-0"> */}
-          <Link href="#" className="hover:text-gray-900">
+          <Link href="/privacy" className="hover:text-gray-900">
             Privacy
           </Link>
-          <Link href="#" className="hover:text-gray-900">
+          <Link href="/privacy" className="hover:text-gray-900">
             Terms and Conditions
           </Link>
           {/* </div> */}
