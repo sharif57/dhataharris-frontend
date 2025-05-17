@@ -1,9 +1,14 @@
+'use client';
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import Link from "next/link";
+import { useUserProfileQuery } from "@/redux/feature/userSlice";
 
 export default function ProfileCardPage() {
+  const {data} = useUserProfileQuery(undefined)
+  const IMAGE = process.env.NEXT_PUBLIC_API_URL
+  console.log(IMAGE , "IMAGE");
   return (
     <main className="min-h-screen  bg-[#ffeff3] flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl shadow-md max-w-md w-full p-6 md:p-8 relative">
@@ -16,7 +21,7 @@ export default function ProfileCardPage() {
         <div className="flex items-center gap-4 mb-8">
           <div className="relative w-14 h-14">
             <Image
-              src="/user.png"
+              src={`${IMAGE}/${data?.profile_pic}` || "/user.png"}
               alt="Dr. Jane Nicholson"
               fill
               className="rounded-full object-cover"
@@ -25,9 +30,9 @@ export default function ProfileCardPage() {
           </div>
           <div>
             <h2 className="font-medium text-[16px] text-[#1F2937]   ">
-              Dr. Jane Nicholson
+              {data?.full_name}
             </h2>
-            <p className="text-sm text-gray-500">yourname@gmail.com</p>
+            <p className="text-sm text-gray-500">{data?.email}</p>
           </div>
         </div>
 
@@ -38,7 +43,7 @@ export default function ProfileCardPage() {
             <label className="block text-sm font-medium text-gray-600 mb-1">
               Name
             </label>
-            <p className="text-gray-800">Dr. Jane Nicholson</p>
+            <p className="text-gray-800">{data?.full_name}</p>
           </div>
 
           {/* Occupation */}
@@ -46,7 +51,7 @@ export default function ProfileCardPage() {
             <label className="block text-sm font-medium text-gray-600 mb-1">
               Occupation
             </label>
-            <p className="text-gray-800">Doctor</p>
+            <p className="text-gray-800"> { data?.occupation || 'Doctor'}</p>
           </div>
 
           {/* Email */}
@@ -54,7 +59,7 @@ export default function ProfileCardPage() {
             <label className="block text-sm font-medium text-gray-600 mb-1">
               Email account
             </label>
-            <p className="text-gray-800">jane20@gmail.com</p>
+            <p className="text-gray-800">{data?.email}</p>
           </div>
 
           {/* Mobile */}
@@ -70,7 +75,7 @@ export default function ProfileCardPage() {
             <label className="block text-sm font-medium text-gray-600 mb-1">
               Location
             </label>
-            <p className="text-gray-800">USA</p>
+            <p className="text-gray-800">{ data?.location ||'USA'}</p>
           </div>
         </div>
 
