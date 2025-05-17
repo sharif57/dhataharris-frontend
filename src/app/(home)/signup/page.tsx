@@ -9,13 +9,16 @@ import { Mail, KeyRound, Eye, EyeOff, User } from "lucide-react";
 import Link from "next/link";
 import { useRegisterMutation } from "@/redux/feature/authSlice";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  
 
   const [register] = useRegisterMutation();
   const handleSubmit = async (e: React.FormEvent) => {
@@ -37,6 +40,7 @@ export default function RegisterPage() {
       }).unwrap();
       console.log("Registration response:", response);
       toast.success(response?.message || "Registration successful!");
+      router.push(`/verify-email?email=${email}`);
     } catch (error: unknown) {
       console.error("Registration failed:", error);
       const errorResponse = error as { data?: { message: string } };

@@ -3,14 +3,20 @@
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useVerifyEmailMutation } from "@/redux/feature/authSlice";
+import { toast } from "sonner";
 
 export default function VerifyEmailPage() {
   const router = useRouter();
 
-  const [otp, setOtp] = useState<string[]>(["1", "", "", "", "", ""]);
+  const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
   const [isVerifying, setIsVerifying] = useState(false);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const searchParams = useSearchParams();
+    const userMail = searchParams.get("email") || ""; // Get email from URL query parameter
+    console.log(userMail, "userMail");
+  const [verifyEmail] = useVerifyEmailMutation();
 
   // Initialize refs array
   useEffect(() => {
@@ -76,15 +82,20 @@ export default function VerifyEmailPage() {
     setIsVerifying(true);
 
     try {
+    const res = await verifyEmail({ email: userMail, otp: otpValue.trim() }).unwrap();
+    console.log(res , "res");
+
       // Simulate API call to verify OTP
       await new Promise((resolve) => setTimeout(resolve, 1500));
       console.log("Verifying OTP:", otpValue);
-      alert("Email verified successfully!");
-      router.push("/reset-password");
+      // alert("Email verified successfully!");
+      toast.success( res.data?.message || "Email verified successfully!");
+      router.push("/sign-in");
       // Redirect to next page or show success message
     } catch (error) {
       console.error("Verification failed:", error);
-      alert("Verification failed. Please try again.");
+      // alert("Verification failed. Please try again.");
+      toast.error("Verification failed. Please try again.");
     } finally {
       setIsVerifying(false);
     }
