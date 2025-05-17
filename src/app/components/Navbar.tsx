@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // "use client";
 
 // import { useState } from "react";
@@ -164,10 +165,22 @@ import Image from "next/image";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 import { usePathname } from "next/navigation";
+import { useUserProfileQuery } from "@/redux/feature/userSlice";
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { data } = useUserProfileQuery(undefined);
+  console.log(data, "data");
 
   // List of paths where Navbar should not render
   const hiddenPaths = [
@@ -201,6 +214,8 @@ export default function Navbar() {
       window.location.href = "/#donation-section";
     }
   };
+  const IMAGE = process.env.IMAGE_NEXT_PUBLIC_API_URL;
+  const profileSrc = `${IMAGE}${data?.profile_pic}`;
 
   return (
     <>
@@ -257,12 +272,40 @@ export default function Navbar() {
 
           {/* Auth and Donate Buttons */}
           <div className="flex items-center space-x-4">
-            <Link
-              href="/sign-in"
-              className="hidden sm:block text-[#727A7C] hover:text-gray-900"
-            >
-              Sign In
-            </Link>
+            {!data ? (
+              <Link
+                href="/sign-in"
+                className="hidden sm:block text-[#727A7C] hover:text-gray-900"
+              >
+                Sign In
+              </Link>
+            ) : (
+              // <Link
+              // href="/profile"
+              // className="hidden sm:block text-[#727A7C] hover:text-gray-900"
+              // >
+              // {data?.full_name || 'My Profile'}
+              // </Link>
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <img
+                    src={profileSrc}
+                    alt="Profile"
+                    width={32}
+                    height={32}
+                    className="rounded-full w-8 h-8 relative mx-auto sm:mx-0 object-cover"
+                  />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Profile</DropdownMenuItem>
+                  <DropdownMenuItem>Billing</DropdownMenuItem>
+                  <DropdownMenuItem>Team</DropdownMenuItem>
+                  <DropdownMenuItem>Subscription</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            )}
             <button
               onClick={handleDonateClick}
               className="bg-[#760C2A] text-white px-4 py-2 rounded-md flex items-center"

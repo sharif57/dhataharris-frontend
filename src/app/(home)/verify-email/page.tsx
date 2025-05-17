@@ -1,13 +1,12 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useVerifyEmailMutation } from "@/redux/feature/authSlice";
 import { toast } from "sonner";
-
-export default function VerifyEmailPage() {
+ function VerifyOTP() {
   const router = useRouter();
 
   const [otp, setOtp] = useState<string[]>(["", "", "", "", "", ""]);
@@ -146,5 +145,13 @@ export default function VerifyEmailPage() {
         </p>
       </div>
     </main>
+  );
+}
+
+export default function VerifyEmail() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <VerifyOTP />
+    </Suspense>
   );
 }

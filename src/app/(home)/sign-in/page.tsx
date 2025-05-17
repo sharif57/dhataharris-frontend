@@ -7,12 +7,17 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Mail, KeyRound, Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
+import { useLoginMutation } from "@/redux/feature/authSlice";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [login] = useLoginMutation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,13 +31,20 @@ export default function LoginPage() {
 
     // Simulate API call
     try {
+      const res = await login({ email, password }).unwrap();
+      console.log(res , "res");
+      localStorage.setItem("accessToken", res?.access);
       // In a real app, you would call your authentication API here
       await new Promise((resolve) => setTimeout(resolve, 1000));
       console.log("Login attempted with:", { email, password });
-      alert("Login successful!");
-    } catch (error) {
+      // alert("Login successful!");
+      toast.success(res?.message || "Login successful!");
+
+      router.push("/");
+    } catch (error: unknown) {
       console.error("Login failed:", error);
-      alert("Login failed. Please try again.");
+      const errorMessage = error instanceof Error ? error.message : "Login failed. Please try again.";
+      toast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }
