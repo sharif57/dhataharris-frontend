@@ -8,9 +8,9 @@ export const storyApi = baseApi.injectEndpoints({
       query: () => ({
         url: "/blogs/v1/blogs/",
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
+        // headers: {
+        //   Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        // },
       }),
 
       providesTags: ["Story"],
