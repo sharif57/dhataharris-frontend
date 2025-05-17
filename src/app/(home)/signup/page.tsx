@@ -7,14 +7,17 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Mail, KeyRound, Eye, EyeOff, User } from "lucide-react";
 import Link from "next/link";
+import { useRegisterMutation } from "@/redux/feature/authSlice";
+import { toast } from "sonner";
 
 export default function RegisterPage() {
-  const [email, setEmail] = useState("");
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [register] = useRegisterMutation();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -27,13 +30,19 @@ export default function RegisterPage() {
 
     // Simulate API call
     try {
-      // In a real app, you would call your authentication API here
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log("Login attempted with:", { email, password, name });
-      alert("Login successful!");
-    } catch (error) {
-      console.error("Login failed:", error);
-      alert("Login failed. Please try again.");
+      const response = await register({
+        email,
+        password,
+        full_name: name.trim(),
+      }).unwrap();
+      console.log("Registration response:", response);
+      toast.success(response?.message || "Registration successful!");
+    } catch (error: unknown) {
+      console.error("Registration failed:", error);
+      const errorResponse = error as { data?: { message: string } };
+      toast.error(
+        errorResponse.data?.message || "Registration failed. Please try again."
+      );
     } finally {
       setIsLoading(false);
     }
@@ -43,7 +52,7 @@ export default function RegisterPage() {
     <main className="min-h-screen bg-[#760C2A] flex items-center justify-center p-4">
       <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 md:p-8">
         <h1 className="text-xl font-medium text-center text-gray-800 mb-8">
-          Login
+          Sign Up
         </h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -56,7 +65,7 @@ export default function RegisterPage() {
               type="name"
               placeholder="Enter your name..."
               className="pl-10 pr-4 py-2 rounded-full border border-gray-300 w-full"
-              value={email}
+              value={name}
               onChange={(e) => setName(e.target.value)}
               required
             />
@@ -101,8 +110,6 @@ export default function RegisterPage() {
             </button>
           </div>
 
-        
-
           {/* Sign In Button */}
           <Button
             type="submit"
@@ -123,8 +130,6 @@ export default function RegisterPage() {
             Sign In
           </Link>
         </div>
-
-      
       </div>
     </main>
   );
