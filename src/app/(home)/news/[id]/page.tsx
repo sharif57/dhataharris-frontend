@@ -16,7 +16,7 @@ export default function MSArticlePage() {
           <img
             src={data?.image}
             alt="Doctor attending to patient"
-            className="object-cover  rounded-3xl"
+            className="object-cover  rounded-3xl w-full"
           />
         </div>
 
