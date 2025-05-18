@@ -9,7 +9,7 @@ export default function MSArticlePage() {
   const { data } = useBlogsDetailsQuery(id);
   console.log(data, "data");
   return (
-    <div className="bg-[#f9f9f9] px-4 md:px-6">   m  
+    <div className="bg-[#f9f9f9] px-4 md:px-6">    
       <main className="min-h-screen  max-w-6xl mx-auto pt-10">
         {/* Header Image */}
         <div className="relative w-full h-[200px] md:h-[440px] rounded-3xl overflow-hidden ">

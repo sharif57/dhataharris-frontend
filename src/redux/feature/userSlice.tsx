@@ -18,11 +18,11 @@ export const userApi = baseApi.injectEndpoints({
 
     updateProfile: builder.mutation({
       query: (data) => ({
-        url: "/accounts/update_user_profile/",
+        url: "/auth/update_user_profile/",
         method: "PATCH",
         body: data,
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
       }),
       invalidatesTags: ["User"],
