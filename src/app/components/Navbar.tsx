@@ -55,7 +55,7 @@ export default function Navbar() {
       window.location.href = "/#donation-section";
     }
   };
-  const IMAGE = process.env.NEXT_PUBLIC_API_URL;
+  const IMAGE = process.env.NEXT_PUBLIC_IMAGE;
   const profileSrc = `${IMAGE}${data?.profile_pic}`;
 
   return (
@@ -134,7 +134,7 @@ export default function Navbar() {
                     alt="Profile"
                     width={32}
                     height={32}
-                    className="rounded-full w-8 h-8 relative mx-auto sm:mx-0 object-cover"
+                    className="rounded-full w-10 h-10 relative mx-auto sm:mx-0 object-cover"
                   />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>

@@ -7,7 +7,7 @@ import { useUserProfileQuery } from "@/redux/feature/userSlice";
 
 export default function ProfileCardPage() {
   const {data} = useUserProfileQuery(undefined)
-  const IMAGE = process.env.NEXT_PUBLIC_API_URL
+  const IMAGE = process.env.NEXT_PUBLIC_IMAGE
   console.log(IMAGE , "IMAGE");
   return (
     <main className="min-h-screen  bg-[#ffeff3] flex items-center justify-center p-4">
@@ -63,12 +63,12 @@ export default function ProfileCardPage() {
           </div>
 
           {/* Mobile */}
-          <div>
+          {/* <div>
             <label className="block text-sm font-medium text-gray-600 mb-1">
               Mobile number
             </label>
             <p className="text-gray-500">Add number</p>
-          </div>
+          </div> */}
 
           {/* Location */}
           <div>
