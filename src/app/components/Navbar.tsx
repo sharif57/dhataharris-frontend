@@ -16,12 +16,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { toast } from "sonner";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { data } = useUserProfileQuery(undefined);
-  console.log(data, "data");
+  const { data, refetch } = useUserProfileQuery(undefined);
+  console.log(data, "data navbar");
 
   // List of paths where Navbar should not render
   const hiddenPaths = [
@@ -57,6 +58,14 @@ export default function Navbar() {
   };
   const IMAGE = process.env.NEXT_PUBLIC_IMAGE;
   const profileSrc = `${IMAGE}${data?.profile_pic}`;
+
+  const handleLogOut = () => {
+    // Implement your logout logic here
+
+    localStorage.removeItem("accessToken");
+    toast.success("Logout successful!");
+    refetch();
+  };
 
   return (
     <>
@@ -145,7 +154,12 @@ export default function Navbar() {
                   </Link>
                   <DropdownMenuItem>Billing</DropdownMenuItem>
                   <DropdownMenuItem>Team</DropdownMenuItem>
-                  <DropdownMenuItem className="text-red-600">Log Out</DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="text-red-600"
+                    onClick={() => handleLogOut()}
+                  >
+                    Log Out
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             )}

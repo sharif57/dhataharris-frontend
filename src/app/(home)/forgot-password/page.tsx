@@ -6,20 +6,22 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
-;
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useForgotPasswordMutation } from "@/redux/feature/authSlice";
+import { toast } from "sonner";
 
 export default function LoginPage() {
-    const router = useRouter();
+  const router = useRouter();
   const [email, setEmail] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
+  const [forgotPassword] = useForgotPasswordMutation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!email ) {
+    if (!email) {
       alert("Please fill in all fields");
       return;
     }
@@ -28,11 +30,13 @@ export default function LoginPage() {
 
     // Simulate API call
     try {
+      const res = await forgotPassword({ email }).unwrap();
+      console.log(res, "res");
       // In a real app, you would call your authentication API here
       await new Promise((resolve) => setTimeout(resolve, 1000));
       console.log("Login attempted with:", { email });
-      alert("Login successful!");
-      router.push("/verify-email");
+      toast.success(res?.message ||"Email sent successfully!");
+      router.push(`/forgetVerify?email=${email}`);
     } catch (error) {
       console.error("Login failed:", error);
       alert("Login failed. Please try again.");

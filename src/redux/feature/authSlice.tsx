@@ -2,7 +2,6 @@
 
 import baseApi from "../Api/baseApi";
 
-
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     register: builder.mutation({
@@ -32,7 +31,7 @@ export const authApi = baseApi.injectEndpoints({
 
     forgotPassword: builder.mutation({
       query: (data) => ({
-        url: "/accounts/resend_otp/",
+        url: "/auth/forgot_password/",
         method: "POST",
         body: data,
       }),
@@ -49,30 +48,39 @@ export const authApi = baseApi.injectEndpoints({
     resetPassword: builder.mutation({
       query: (data) => {
         return {
-          url: "/accounts/forgot_password/",
+          url: "/auth/update_password/",
           method: "POST",
           body: data,
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("verify")}`,
+            Authorization: `Bearer ${localStorage.getItem("access")}`,
           },
         };
       },
     }),
 
     googleLogin: builder.mutation({
-      query: (data) => ({
+      query: ({id_token}) => ({
         url: "/auth/googleLogin/",
         method: "POST",
-        body: data,
+        body: {id_token: id_token},
       }),
     }),
 
+    // facebookLogin: builder.mutation({
+    //   query: ({ access_token }) => ({
+    //     url: "/auth/facebookLogin/",
+    //     method: "POST",
+    //     headers: {
+    //       Authorization: `${access_token}`,
+    //     },
+    //   }),
+    // }),
     facebookLogin: builder.mutation({
-      query: ({ accessToken }) => ({
-        url: "/auth/login/facebook",
+      query: ({ access_token }) => ({
+        url: "/auth/facebookLogin/",
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
+        body: {
+          access_token: access_token,
         },
       }),
     }),
