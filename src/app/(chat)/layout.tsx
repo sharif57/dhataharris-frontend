@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
+import Providers from "@/Providers/Providers";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` antialiased font-roboto`}>{children}</body>
+      <body className={` antialiased font-roboto`}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

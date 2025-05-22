@@ -1,4 +1,15 @@
 "use client";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { useCreateSessionMutation } from "@/redux/feature/chatSlice";
+import { useUserProfileQuery } from "@/redux/feature/userSlice";
+import { Home, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,7 +22,6 @@ interface ChatSidebarProps {
 export default function ChatSidebar({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
-  
 }: ChatSidebarProps) {
   //   const [activeSection, setActiveSection] = useState("today")
 
@@ -26,6 +36,24 @@ export default function ChatSidebar({
       .fill(0)
       .map((_, i) => `Chat name ${i + 1}`),
   };
+
+  const [createSession] = useCreateSessionMutation();
+  const { data } = useUserProfileQuery(undefined);
+  console.log("User Profile Data:", data);
+
+  const handleCreateSession = async () => {
+    try {
+      const response = await createSession({
+        email: data?.email,
+      }).unwrap();
+      localStorage.setItem("sessionId", response?.session_id);
+      console.log("Session created successfully:", response);
+    } catch (error) {
+      console.error("Error creating session:", error);
+    }
+  };
+
+  const IMAGE = process.env.NEXT_PUBLIC_IMAGE;
 
   return (
     <>
@@ -60,7 +88,7 @@ export default function ChatSidebar({
                 className="w-[80px] "
               ></Image>
               <button
-                onClick={() => window.location.reload()}
+                onClick={handleCreateSession}
                 className="p-2 cursor-pointer rounded-full  transition-colors"
               >
                 <svg
@@ -96,8 +124,6 @@ export default function ChatSidebar({
                 </svg>
               </button>
             </div>
-
-            
           </div>
 
           {/* Chat Sections */}
@@ -109,66 +135,7 @@ export default function ChatSidebar({
                   <li key={`today-${index}`} className="relative group">
                     <button className="w-full text-left py-2 px-3 rounded hover:bg-[#760C2A] hover:text-white transition-colors text-sm flex items-center justify-between">
                       <span>{chat}</span>
-                      <div className="relative">
-                        {/* <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveMenu(
-                              activeMenu === `today-${index}`
-                                ? null
-                                : `today-${index}`
-                            );
-                          }}
-                          className="opacity-0 group-hover:opacity-100 focus:opacity-100 p-1 rounded-full hover:bg-[#006A82]"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button> */}
-
-                        {/* {activeMenu === `today-${index}` && (
-                          <div className="absolute right-0 mt-1 w-32 bg-[#004050] rounded-md shadow-lg z-10 py-1">
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                // Handle edit
-                                setActiveMenu(null);
-                              }}
-                              // onClick={() => {
-                              //   alert("Edit clicked");
-                              // }}
-                              className="w-full text-left px-3 py-2 text-sm hover:bg-[#005163]"
-                            >
-                              Edit
-                            </button>
-                            <button
-                              // onClick={(e) => {
-                              //   e.stopPropagation();
-                              //   // Handle delete
-                              //   setActiveMenu(null);
-                              // }}
-                              onClick={() => {
-                                toast.success("Chat deleted successfully!");
-                              }}
-                              className="w-full text-left px-3 py-2 text-sm hover:bg-[#005163] text-red-400"
-                            >
-                              Delete
-                            </button>
-                          </div>
-                        )} */}
-                      </div>
+                      <div className="relative"></div>
                     </button>
                   </li>
                 ))}
@@ -181,128 +148,8 @@ export default function ChatSidebar({
                 {chatGroups.yesterday.map((chat, index) => (
                   <li key={`yesterday-${index}`} className="relative group">
                     <button className="w-full text-left py-2 px-3 rounded hover:bg-[#760C2A] hover:text-white transition-colors text-sm flex items-center justify-between">
-                    <span>{chat}</span>
-                      <div className="relative">
-                        {/* <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveMenu(
-                              activeMenu === `yesterday-${index}`
-                                ? null
-                                : `yesterday-${index}`
-                            );
-                          }}
-                          className="opacity-0 group-hover:opacity-100 focus:opacity-100 p-1 rounded-full hover:bg-[#006A82]"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button> */}
-
-                        {/* {activeMenu === `yesterday-${index}` && (
-                          <div className="absolute right-0 mt-1 w-32 bg-[#004050] rounded-md shadow-lg z-10 py-1">
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                // Handle edit
-                                setActiveMenu(null);
-                              }}
-                              className="w-full text-left px-3 py-2 text-sm hover:bg-[#005163]"
-                            >
-                              Edit
-                            </button>
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                // Handle delete
-                                setActiveMenu(null);
-                              }}
-                              className="w-full text-left px-3 py-2 text-sm hover:bg-[#005163] text-red-400"
-                            >
-                              Delete
-                            </button>
-                          </div>
-                        )} */}
-                      </div>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="p-4">
-              <h2 className="text-sm font-medium mb-2">Previous 7 days</h2>
-              <ul className="space-y-1">
-                {chatGroups.previous.map((chat, index) => (
-                  <li key={`previous-${index}`} className="relative group">
-                    <button className="w-full text-left py-2 px-3 rounded hover:bg-[#760C2A] hover:text-white transition-colors text-sm flex items-center justify-between">
-                    <span>{chat}</span>
-                      <div className="relative">
-                        {/* <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveMenu(
-                              activeMenu === `previous-${index}`
-                                ? null
-                                : `previous-${index}`
-                            );
-                          }}
-                          className="opacity-0 group-hover:opacity-100 focus:opacity-100 p-1 rounded-full hover:bg-[#006A82]"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="1"></circle>
-                            <circle cx="19" cy="12" r="1"></circle>
-                            <circle cx="5" cy="12" r="1"></circle>
-                          </svg>
-                        </button> */}
-
-                        {/* {activeMenu === `previous-${index}` && (
-                          <div className="absolute right-0 mt-1 w-32 bg-[#004050] rounded-md shadow-lg z-10 py-1">
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                // Handle edit
-                                setActiveMenu(null);
-                              }}
-                              className="w-full text-left px-3 py-2 text-sm hover:bg-[#005163]"
-                            >
-                              Edit
-                            </button>
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                // Handle delete
-                                setActiveMenu(null);
-                              }}
-                              className="w-full text-left px-3 py-2 text-sm hover:bg-[#005163] text-red-400"
-                            >
-                              Delete
-                            </button>
-                          </div>
-                        )} */}
-                      </div>
+                      <span>{chat}</span>
+                      <div className="relative"></div>
                     </button>
                   </li>
                 ))}
@@ -310,19 +157,41 @@ export default function ChatSidebar({
             </div>
           </div>
 
-          {/* User Profile */}
-          <Link href={'my-profile'} className="p-4 border-t border-[#006A82] flex items-center">
-            <div className="w-8 h-8 rounded-full bg-gray-400 mr-3 overflow-hidden">
-              <Image
-                src="/placeholder.svg?height=32&width=32"
-                alt="User avatar"
-                width={32}
-                height={32}
-                className="object-cover"
-              />
-            </div>
-            <span className="text-sm">Marvin McKinney</span>
-          </Link>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              {/* <Button variant="outline">Open</Button> */}
+              <div className="p-4 border-t cursor-pointer hover:bg-[#760C2A] hover:text-white  duration-300 border-b border-[#760C2A] flex items-center">
+                <div className="w-8 h-8 rounded-full bg-gray-400 mr-3 overflow-hidden">
+                  <Image
+                    src={`${IMAGE}/${data?.profile_pic}`}
+                    alt="User avatar"
+                    width={32}
+                    height={32}
+                    className="object-cover"
+                  />
+                </div>
+                <span className="text-sm">{data?.full_name}</span>
+              </div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <Home />
+                <Link href={"/"}>Home</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="">
+                <User />
+                <span>{data?.full_name}</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="">
+                <User />
+                {/* <span>Profile</span> */}
+                <Link href={"/my-profile"}>Profile</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </>

@@ -31,6 +31,7 @@ export default function Navbar() {
     "/signup",
     "/verify-email",
     "/reset-password",
+    
   ];
 
   if (hiddenPaths.includes(pathname)) {
