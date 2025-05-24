@@ -21,6 +21,7 @@ import {
   ReactFacebookFailureResponse,
 } from "react-facebook-login";
 import { useUserProfileQuery } from "@/redux/feature/userSlice";
+import { saveTokens } from "@/service/authService";
 
 export default function Login() {
   const router = useRouter();
@@ -48,6 +49,7 @@ export default function Login() {
     try {
       const res = await login({ email, password }).unwrap();
       console.log(res, "res");
+      await saveTokens(res?.access);
       localStorage.setItem("accessToken", res?.access);
       // In a real app, you would call your authentication API here
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -55,7 +57,7 @@ export default function Login() {
       // alert("Login successful!");
       toast.success(res?.message || "Login successful!");
 
-      router.push("/");
+      // router.push("/");
       window.location.href = "/";
     } catch (error: unknown) {
       console.error("Login failed:", error);
@@ -91,6 +93,7 @@ export default function Login() {
       console.log(response);
 
       if (response.success) {
+        await saveTokens(response?.data?.access);
         localStorage.setItem("accessToken", response?.data?.access);
         toast.success("Google login successful!");
         router.push("/");
@@ -122,57 +125,6 @@ export default function Login() {
     toast.error("Google login failed. Please try again.");
   };
 
-  // const handleResponse = async (
-  //   response: ReactFacebookLoginInfo | ReactFacebookFailureResponse
-  // ) => {
-  //   console.log("Facebook Response:", response);
-
-  //   if ("accessToken" in response) {
-  //     try {
-  //       const { accessToken } = response;
-  //       console.log("Facebook Access Token:", accessToken);
-  //       console.log(response, "================||");
-
-  //       // Send token to your backend
-  //       const result = await facebookLogin({
-  //         access_token: accessToken,
-  //       }).unwrap();
-  //       console.log("Backend Response:", result);
-
-  //       if (result.success) {
-  //         if (result?.data?.token) {
-  //           localStorage.setItem("token", result?.data?.token);
-  //           localStorage.setItem("user", JSON.stringify(result?.data?.user));
-  //         }
-
-  //         toast.success("Login successful!");
-  //         // router.push("/");
-  //       } else {
-  //         throw new Error(result.message || "Facebook login failed");
-  //       }
-  //     } catch (error: unknown) {
-  //       console.error("Facebook login error:", error);
-  //       toast.error(
-  //         (error &&
-  //         typeof error === "object" &&
-  //         "data" in error &&
-  //         typeof error.data === "object" &&
-  //         error.data &&
-  //         "message" in error.data
-  //           ? (error.data as { message: string }).message
-  //           : error instanceof Error
-  //           ? error.message
-  //           : "") || "Failed to login with Facebook"
-  //       );
-
-  //       // localStorage.removeItem("facebookAccessToken");
-  //     }
-  //   } else {
-  //     console.error("Facebook login failed:", response);
-  //     toast.error("Facebook login failed. Please try again.");
-  //   }
-  //   // await refetch();
-  // };
   const handleResponse = async (
     response: ReactFacebookLoginInfo | ReactFacebookFailureResponse
   ) => {
@@ -188,6 +140,8 @@ export default function Login() {
           access_token: accessToken,
         }).unwrap();
         console.log("Backend Response:", result);
+        await saveTokens(result?.data?.access);
+
         localStorage.setItem("accessToken", result?.data?.access);
 
         if (result.success) {
@@ -196,7 +150,7 @@ export default function Login() {
           // }
 
           toast.success("Login successful!");
-          router.push("/");
+          window.location.href = "/";
           // window.location.reload(); // Consider if you really need this
         } else {
           throw new Error(result.message || "Facebook login failed");

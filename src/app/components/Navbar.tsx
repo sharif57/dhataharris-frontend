@@ -17,11 +17,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { toast } from "sonner";
+import { logout } from "@/service/authService";
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { data, refetch } = useUserProfileQuery(undefined);
+  const { data } = useUserProfileQuery(undefined);
   console.log(data, "data navbar");
 
   // List of paths where Navbar should not render
@@ -31,7 +32,6 @@ export default function Navbar() {
     "/signup",
     "/verify-email",
     "/reset-password",
-    
   ];
 
   if (hiddenPaths.includes(pathname)) {
@@ -60,12 +60,22 @@ export default function Navbar() {
   const IMAGE = process.env.NEXT_PUBLIC_IMAGE;
   const profileSrc = `${IMAGE}${data?.profile_pic}`;
 
-  const handleLogOut = () => {
+  const handleLogOut = async () => {
     // Implement your logout logic here
 
-    localStorage.removeItem("accessToken");
-    toast.success("Logout successful!");
-    refetch();
+    // localStorage.removeItem("accessToken");
+    // toast.success("Logout successful!");
+    // refetch();
+    // window.location.href = "/";
+
+    if (toast.info("Logging out...")) {
+      localStorage.removeItem("accessToken");
+      // localStorage.removeItem("refreshToken");
+      await logout();
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000);
+    }
   };
 
   return (
@@ -153,8 +163,8 @@ export default function Navbar() {
                   <Link href={"/my-profile"}>
                     <DropdownMenuItem>Profile</DropdownMenuItem>
                   </Link>
-                  <DropdownMenuItem>Billing</DropdownMenuItem>
-                  <DropdownMenuItem>Team</DropdownMenuItem>
+                  {/* <DropdownMenuItem>Billing</DropdownMenuItem>
+                  <DropdownMenuItem>Team</DropdownMenuItem> */}
                   <DropdownMenuItem
                     className="text-red-600"
                     onClick={() => handleLogOut()}
