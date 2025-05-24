@@ -7,7 +7,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useCreateSessionMutation } from "@/redux/feature/chatSlice";
+import {
+  useCreateSessionMutation,
+  useUserAllSessionsQuery,
+} from "@/redux/feature/chatSlice";
 import { useUserProfileQuery } from "@/redux/feature/userSlice";
 import { Home, User } from "lucide-react";
 import Image from "next/image";
@@ -19,34 +22,31 @@ interface ChatSidebarProps {
   setIsSearchModalOpen: (isOpen: boolean) => void;
 }
 
+interface ChatSession {
+  session_id: string;
+  title: string;
+}
+
 export default function ChatSidebar({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }: ChatSidebarProps) {
-  //   const [activeSection, setActiveSection] = useState("today")
-
-  const chatGroups = {
-    today: Array(8)
-      .fill(0)
-      .map((_, i) => `Chat name ${i + 1}`),
-    yesterday: Array(8)
-      .fill(0)
-      .map((_, i) => `Chat name ${i + 1}`),
-    previous: Array(8)
-      .fill(0)
-      .map((_, i) => `Chat name ${i + 1}`),
-  };
-
   const [createSession] = useCreateSessionMutation();
   const { data } = useUserProfileQuery(undefined);
-  console.log("User Profile Data:", data);
+  // console.log("User Profile Data:", data);
+  const { data: sessionData } = useUserAllSessionsQuery(data?.email);
+  console.log("Session Data:", sessionData);
 
   const handleCreateSession = async () => {
     try {
       const response = await createSession({
         email: data?.email,
       }).unwrap();
+
       localStorage.setItem("sessionId", response?.session_id);
+      // router.push("/chat");
+
+      window.location.href = "/chat";
       console.log("Session created successfully:", response);
     } catch (error) {
       console.error("Error creating session:", error);
@@ -131,24 +131,10 @@ export default function ChatSidebar({
             <div className="p-4">
               <h2 className="text-sm font-medium mb-2">Today</h2>
               <ul className="space-y-1">
-                {chatGroups.today.map((chat, index) => (
-                  <li key={`today-${index}`} className="relative group">
+                {sessionData?.map((chat: ChatSession) => (
+                  <li key={chat?.session_id} className="relative group">
                     <button className="w-full text-left py-2 px-3 rounded hover:bg-[#760C2A] hover:text-white transition-colors text-sm flex items-center justify-between">
-                      <span>{chat}</span>
-                      <div className="relative"></div>
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="p-4">
-              <h2 className="text-sm font-medium mb-2">Yesterday</h2>
-              <ul className="space-y-1">
-                {chatGroups.yesterday.map((chat, index) => (
-                  <li key={`yesterday-${index}`} className="relative group">
-                    <button className="w-full text-left py-2 px-3 rounded hover:bg-[#760C2A] hover:text-white transition-colors text-sm flex items-center justify-between">
-                      <span>{chat}</span>
+                      <span>{chat?.title}</span>
                       <div className="relative"></div>
                     </button>
                   </li>

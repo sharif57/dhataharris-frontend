@@ -6,6 +6,7 @@ const API_URL = "http://192.168.10.19:8000";
 
 export const chatApi = createApi({
   reducerPath: "chatApi",
+  tagTypes: ["Session"],
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
     prepareHeaders: (headers) => {
@@ -23,8 +24,40 @@ export const chatApi = createApi({
         method: "POST",
         body: data,
       }),
+      invalidatesTags: ["Session"],
+    }),
+
+    chatCreate: builder.mutation({
+      query: (data) => ({
+        url: "/chat",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["Session"],
+    }),
+
+    chatList: builder.query({
+      query: (sessionId) => ({
+        url: `/session/${sessionId}/chats`,
+        method: "GET",
+      }),
+      providesTags: ["Session"],
+    }),
+
+    userAllSessions: builder.query({
+      query: (email) => ({
+        url: `/user/${email}/sessions`,
+        method: "GET",
+        // /user/sharifmahamud577951@gmail.com/sessions
+      }),
+      providesTags: ["Session"],
     }),
   }),
 });
 
-export const { useCreateSessionMutation } = chatApi;
+export const {
+  useCreateSessionMutation,
+  useChatCreateMutation,
+  useChatListQuery,
+  useUserAllSessionsQuery
+} = chatApi;
