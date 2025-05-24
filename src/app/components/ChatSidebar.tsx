@@ -132,12 +132,12 @@ export default function ChatSidebar({
               <h2 className="text-sm font-medium mb-2">Today</h2>
               <ul className="space-y-1">
                 {sessionData?.map((chat: ChatSession) => (
-                  <li key={chat?.session_id} className="relative group">
+                  <Link href={`/chat/${chat?.session_id}`} key={chat?.session_id} className="relative group">
                     <button className="w-full text-left py-2 px-3 rounded hover:bg-[#760C2A] hover:text-white transition-colors text-sm flex items-center justify-between">
                       <span>{chat?.title}</span>
                       <div className="relative"></div>
                     </button>
-                  </li>
+                  </Link>
                 ))}
               </ul>
             </div>

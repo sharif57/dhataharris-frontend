@@ -184,7 +184,7 @@
 "use client";
 
 import type React from "react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Suspense } from "react";
 import ChatSidebar from "@/app/components/ChatSidebar";
 import ChatMessage from "@/app/components/ChatMessage";
 import {
@@ -192,6 +192,7 @@ import {
   useChatListQuery,
 } from "@/redux/feature/chatSlice";
 import { useUserProfileQuery } from "@/redux/feature/userSlice";
+import { useSearchParams } from "next/navigation";
 
 interface Message {
   role: "user" | "assistant";
@@ -203,7 +204,10 @@ interface ChatListItem {
   response: string;
 }
 
-export default function Home() {
+function Home() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get("q");
+  console.log(query, "query");
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
@@ -243,6 +247,9 @@ export default function Home() {
       setSessionId(newSessionId);
     }
   }, []);
+  useEffect(() => {
+    setInputValue(query || "");
+  }, [query]);
 
   // Integrate chatList into messages state
   useEffect(() => {
@@ -371,5 +378,13 @@ export default function Home() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function Chat() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Home />
+    </Suspense>
   );
 }
