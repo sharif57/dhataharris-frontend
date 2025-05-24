@@ -129,7 +129,7 @@ export default function ChatSidebar({
           {/* Chat Sections */}
           <div className="flex-1 overflow-y-auto scrollbar-hide font-roboto">
             <div className="p-4">
-              <h2 className="text-sm font-medium mb-2">Today</h2>
+              <h2 className="text-sm font-medium mb-2 font-roboto">Today</h2>
               <ul className="space-y-1">
                 {sessionData?.map((chat: ChatSession) => (
                   <Link href={`/chat/${chat?.session_id}`} key={chat?.session_id} className="relative group">

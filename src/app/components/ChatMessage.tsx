@@ -63,6 +63,7 @@
 
 "use client";
 
+import { marked } from "marked";
 import Image from "next/image";
 
 interface MessageProps {
@@ -73,7 +74,10 @@ interface MessageProps {
   isTyping?: boolean; // Added prop for loading indicator
 }
 
-export default function ChatMessage({ message, isTyping = false }: MessageProps) {
+export default function ChatMessage({
+  message,
+  isTyping = false,
+}: MessageProps) {
   if (message.role === "user") {
     return (
       <div className="mb-4 max-w-3xl ml-auto">
@@ -103,7 +107,8 @@ export default function ChatMessage({ message, isTyping = false }: MessageProps)
         ) : (
           <div
             className="prose prose-invert max-w-none"
-            dangerouslySetInnerHTML={{ __html: message.content }}
+            // dangerouslySetInnerHTML={{ __html: message.content }}
+            dangerouslySetInnerHTML={{ __html: marked.parse(message.content) }}
           />
         )}
       </div>

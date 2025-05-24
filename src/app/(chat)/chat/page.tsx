@@ -304,7 +304,7 @@ function Home() {
   };
 
   return (
-    <div className="flex h-screen bg-white text-black font-[montserrat]">
+    <div className="flex h-screen bg-white text-black font-[roboto]">
       <ChatSidebar
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
