@@ -38,16 +38,16 @@ export default function MSNewsSection() {
           )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
           {data?.slice(0, 6).map((article: NewsArticle) => (
-            <Link href={`/news/${article?.id}`} key={article?.id}>
+            <Link href={`/news/${article?.id}`} key={article?.id} >
               <article key={article?.id} className="overflow-hidden">
                 <div className="aspect-[4/3] relative p-4">
                   <img
                     src={article?.image || "/placeholder.svg"}
                     alt={article?.title}
                     // fill
-                    className="object-cover rounded-2xl"
+                    className="object-cover rounded-2xl h-[300px]"
                   />
                 </div>
                 <div className="p-4">

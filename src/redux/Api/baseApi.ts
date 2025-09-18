@@ -5,7 +5,7 @@ export const baseApi = createApi({
   baseQuery: fetchBaseQuery({
     // baseUrl: "http://10.10.12.111:8001/api",
     // baseUrl: "https://enitiative.org/api",
-    baseUrl: "http://enitiative.org:8080/api",
+    baseUrl: "https://api.enitiative.org/api",
     // prepareHeaders: (headers) => {
     //   const token = localStorage.getItem("accessToken");
 

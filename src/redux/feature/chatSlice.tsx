@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 // Replace with your base URL
 // const API_URL = "http://10.10.12.111:8001/ai/api";
-const API_URL = "https://enitiative.org:8080/ai/api";
+const API_URL = "https://api.enitiative.org/ai/api";
 
 export const chatApi = createApi({
   reducerPath: "chatApi",
