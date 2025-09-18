@@ -4,27 +4,28 @@ export default function HowWorks() {
       number: 1,
       title: "Who Is Behind This Website",
       content:
-        "My name is Shana Harris. I Am The Founder Of The Endtime Group Inc. An Atlanta Based Nonprofit On A Mission To Eradicate Multiple Sclerosis (MS) From The World In Our Lifetime.",
+        "This website is led by Shana Harris, the founder of The Endtime Group Inc., an Atlanta-based nonprofit committed to making a lasting impact on the fight against Multiple Sclerosis (MS).",
     },
     {
       number: 2,
       title: "Know The Story",
       content:
-        "My name is Shana Harris. I Am The Founder Of The Endtime Group Inc. An Atlanta Based Nonprofit On A Mission To Eradicate Multiple Sclerosis (MS) From The World In Our Lifetime.",
+        "The journey began when Shana witnessed the struggles faced by individuals living with MS. Inspired to take action, she created a movement dedicated to raising awareness, funding research, and supporting patients.",
     },
     {
       number: 3,
-      title: "Explore Other Story",
+      title: "Explore Other Stories",
       content:
-        "My name is Shana Harris. I Am The Founder Of The Endtime Group Inc. An Atlanta Based Nonprofit On A Mission To Eradicate Multiple Sclerosis (MS) From The World In Our Lifetime.",
+        "Beyond Shana’s story, countless families and individuals have shared their experiences with MS. These stories remind us that while the disease is challenging, hope, resilience, and community make a real difference.",
     },
     {
       number: 4,
       title: "Get Help From AI",
       content:
-        "My name is Shana Harris. I Am The Founder Of The Endtime Group Inc. An Atlanta Based Nonprofit On A Mission To Eradicate Multiple Sclerosis (MS) From The World In Our Lifetime.",
+        "We use AI-powered tools to provide guidance, resources, and emotional support. Whether you're seeking information, connecting with others, or exploring treatment options, AI can help you find answers quickly.",
     },
   ];
+
 
   return (
     <div className="bg-white">
