@@ -1,8 +1,12 @@
+'use client';
 import Image from "next/image";
 import React from "react";
 import SearchInput from "./SearchInput";
 
+
 export default function Hero() {
+  
+
   return (
     <div>
       {" "}
