@@ -71,10 +71,10 @@ export default function Footer() {
               <Link href="/privacy" className="text-gray-600 hover:text-gray-900">
                 Privacy & Policy
               </Link>
-              <Link href="/privacy" className="text-gray-600 hover:text-gray-900">
+              <Link href="/trust" className="text-gray-600 hover:text-gray-900">
                 Trust & Safety
               </Link>
-              <Link href="/privacy" className="text-gray-600 hover:text-gray-900">
+              <Link href="/terms" className="text-gray-600 hover:text-gray-900">
                 Terms & Conditions
               </Link>
             </div>

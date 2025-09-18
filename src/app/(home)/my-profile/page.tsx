@@ -21,7 +21,7 @@ export default function ProfileCardPage() {
         <div className="flex items-center gap-4 mb-8">
           <div className="relative w-14 h-14">
             <Image
-              src={`${IMAGE}/${data?.profile_pic}` || "/user.png"}
+              src={`${IMAGE}${data?.profile_pic}` || "/user.png"}
               alt="Dr. Jane Nicholson"
               fill
               className="rounded-full object-cover"
