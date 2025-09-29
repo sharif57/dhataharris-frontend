@@ -4,19 +4,19 @@ export default function HowWorks() {
       number: 1,
       title: "Who Is Behind This Website",
       content:
-        "This website is led by Shana Harris, the founder of The Endtime Group Inc., an Atlanta-based nonprofit committed to making a lasting impact on the fight against Multiple Sclerosis (MS).",
+        "This website is led by Dhata Harris, the founder of The Endtime Group Inc., an Atlanta-based nonprofit committed to making a lasting impact on the fight against Multiple Sclerosis (MS).",
     },
     {
       number: 2,
       title: "Know The Story",
       content:
-        "The journey began when Shana witnessed the struggles faced by individuals living with MS. Inspired to take action, she created a movement dedicated to raising awareness, funding research, and supporting patients.",
+        "The journey began when Dhata Harris witnessed the struggles faced by individuals living with MS. Inspired to take action, she created a movement dedicated to raising awareness, funding research, and supporting patients.",
     },
     {
       number: 3,
       title: "Explore Other Stories",
       content:
-        "Beyond Shana’s story, countless families and individuals have shared their experiences with MS. These stories remind us that while the disease is challenging, hope, resilience, and community make a real difference.",
+        "Beyond Dhata Harris story, countless families and individuals have shared their experiences with MS. These stories remind us that while the disease is challenging, hope, resilience, and community make a real difference.",
     },
     {
       number: 4,
