@@ -27,7 +27,7 @@ export default function Platform() {
             </h2>
 
             <div className="space-y-4 text-[#2D3748] text-base   leading-relaxed text-justify">
-              <p>
+              <p className="lowercase">
                 My Name Is Dhata Harris. I Am The Founder Of The Enitiative
                 Group Inc., An Atlanta-Based Nonprofit On A Mission To Eradicate
                 Multiple Sclerosis (MS) From The World In Our Lifetime. I Was
@@ -38,7 +38,7 @@ export default function Platform() {
                 Been Free Of Relapsing Remitting Multiple Sclerosis For 8 Years
                 Now. I Am Not A Doctor, But Identify As A Disruptor.
               </p>
-              <p>
+              <p className="lowercase">
                 At The End Of 2004, I Failed The Run Element Of An Army Physical
                 Fitness Test (APFT). I Had Maxed Out My Push-Ups And Sit-Ups,
                 But In The Last Two Laps Of The 2-Mile Run, My Legs Refused To

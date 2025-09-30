@@ -25,7 +25,7 @@ export default function AboutPage() {
             </h1>
 
             <div className="space-y-4 text-sm md:text-xl text-[#2C383C] font-normal text-justify">
-              <p>
+              <p className="lowercase">
                 My name is Dhata Harris. I am the founder of The Enitiative
                 Group Inc., an Atlanta-based nonprofit on a mission to eradicate
                 Multiple Sclerosis (MS) from the world in our lifetime. I was
@@ -36,7 +36,7 @@ export default function AboutPage() {
                 Relapsing Remitting Multiple Sclerosis for 8 years now. I am not
                 a doctor, but identify as a disruptor
               </p>
-              <p>
+              <p className="lowercase">
                 At the end of 2004, I failed the run element of an Army Physical
                 Fitness Test (APFT). I had maxed out my push-ups and sit-ups,
                 but in the last two laps of the 2-mile run, my legs refused to
@@ -53,7 +53,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="space-y-4 text-sm md:text-base text-[#2C383C] font-normal mt-8 text-justify">
+        <div className="space-y-4 text-sm md:text-base text-[#2C383C] font-normal mt-8 text-justify lowercase">
           <p>
             But it wasn’t until I started connecting these events into a
             timeline—and matching them with scientific research—that the full

@@ -4,7 +4,7 @@ export default function HowWorks() {
       number: 1,
       title: "Who Is Behind This Website",
       content:
-        "This website is led by Dhata Harris, the founder of The Endtime Group Inc., an Atlanta-based nonprofit committed to making a lasting impact on the fight against Multiple Sclerosis (MS).",
+        "This website is led by Dhata Harris, the founder of The Enitiative Group , an Atlanta-based nonprofit committed to making a lasting impact on the fight against Multiple Sclerosis (MS).",
     },
     {
       number: 2,

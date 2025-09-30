@@ -8,10 +8,17 @@ export default function page() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
           <embed
-            src="/Novel therapies in MS Treatments Final (1) (1).pdf"
+            // src="/Novel therapies in MS Treatments Final (1) (1).pdf"
+            src="/pdf2.pdf"
             type="application/pdf"
-            className="w-full h-[1000px] bg-red-300"
+            className="w-full h-[1000px] "
           />
+
+          {/* <iframe
+            src="/pdf2.pdf#toolbar=0&navpanes=0&scrollbar=0"
+            className="w-full h-[1000px]"
+          ></iframe> */}
+
 
           <div className="grid grid-cols-1 mt-12 md:grid-cols-2 gap-16 items-center ">
             {/* Journey Text Content */}
