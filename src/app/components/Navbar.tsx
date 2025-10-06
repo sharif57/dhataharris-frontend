@@ -129,6 +129,14 @@ export default function Navbar() {
             >
               User Story
             </Link>
+            <a
+              // href="https://www.youtube.com/watch?v=cwtM4hDbLDg&t=45s"
+              href="https://www.youtube.com/@the500thousand/featured"
+              target="_blank"
+              className={`text-[#727A7C]`}
+            >
+              My Series
+            </a>
           </nav>
 
           {/* Auth and Donate Buttons */}
