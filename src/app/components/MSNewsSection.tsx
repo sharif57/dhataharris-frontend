@@ -39,7 +39,7 @@ export default function MSNewsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
-          {data?.slice(0, 6).map((article: NewsArticle) => (
+          {data?.data?.slice(0, 6).map((article: NewsArticle) => (
             <Link href={`/news/${article?.id}`} key={article?.id} >
               <article key={article?.id} className="overflow-hidden">
                 <div className="aspect-[4/3] relative p-4">
@@ -55,7 +55,7 @@ export default function MSNewsSection() {
                     {article?.title}
                   </h3>
                   <p className="text-sm text-gray-700 leading-snug font-normal">
-                    {article?.description}
+                    {article?.description.slice(0, 200)}...
                   </p>
                 </div>
               </article>

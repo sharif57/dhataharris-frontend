@@ -67,8 +67,8 @@ export default function StoriesSection() {
           <p>Error fetching stories. Please try again later.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {data && data.length > 0 ? (
-              data.map((story: Story) => (
+            {data && data?.data?.length > 0 ? (
+              data?.data.map((story: Story) => (
                 <StoryCard
                   key={story.id}
                   id={story.id.toString()}

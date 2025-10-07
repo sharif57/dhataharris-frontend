@@ -7,6 +7,7 @@ import { useUserProfileQuery } from "@/redux/feature/userSlice";
 
 export default function ProfileCardPage() {
   const {data} = useUserProfileQuery(undefined)
+  console.log(data?.data?.profile_pic, 'profile ==============?')
   const IMAGE = process.env.NEXT_PUBLIC_IMAGE
   console.log(IMAGE , "IMAGE");
   return (
@@ -20,17 +21,17 @@ export default function ProfileCardPage() {
         {/* Header with Profile Image and Name */}
         <div className="flex items-center gap-4 mb-8">
           <div className="relative w-14 h-14">
-            <Image
-              src={`${IMAGE}${data?.profile_pic}` || "/user.png"}
+            <img
+              src={`${IMAGE}${data?.data?.profile_pic}` || "/user.png"}
               alt="Dr. Jane Nicholson"
-              fill
+              // fill
               className="rounded-full object-cover"
-              priority
+              // priority
             />
           </div>
           <div>
             <h2 className="font-medium text-[16px] text-[#1F2937]   ">
-              {data?.full_name}
+              {data?.data?.full_name}
             </h2>
             <p className="text-sm text-gray-500">{data?.email}</p>
           </div>
@@ -43,7 +44,7 @@ export default function ProfileCardPage() {
             <label className="block text-sm font-medium text-gray-600 mb-1">
               Name
             </label>
-            <p className="text-gray-800">{data?.full_name}</p>
+            <p className="text-gray-800">{data?.data?.full_name}</p>
           </div>
 
           {/* Occupation */}
@@ -51,7 +52,7 @@ export default function ProfileCardPage() {
             <label className="block text-sm font-medium text-gray-600 mb-1">
               Occupation
             </label>
-            <p className="text-gray-800"> { data?.occupation || 'Doctor'}</p>
+            <p className="text-gray-800"> { data?.data?.occupation || 'Doctor'}</p>
           </div>
 
           {/* Email */}
@@ -59,7 +60,7 @@ export default function ProfileCardPage() {
             <label className="block text-sm font-medium text-gray-600 mb-1">
               Email account
             </label>
-            <p className="text-gray-800">{data?.email}</p>
+            <p className="text-gray-800">{data?.data?.email}</p>
           </div>
 
           {/* Mobile */}
@@ -75,7 +76,7 @@ export default function ProfileCardPage() {
             <label className="block text-sm font-medium text-gray-600 mb-1">
               Location
             </label>
-            <p className="text-gray-800">{ data?.location ||'USA'}</p>
+            <p className="text-gray-800">{ data?.data?.location ||'USA'}</p>
           </div>
         </div>
 

@@ -37,22 +37,22 @@ export default function ProfileEditPage() {
   useEffect(() => {
     if (data) {
       setProfileData({
-        id: data.id || "",
-        full_name: data.full_name || "",
-        email: data.email || "",
-        occupation: data.occupation || "",
-        mobile_no: data.mobile_no || "",
-        location: data.location || "",
+        id: data?.data?.id || "",
+        full_name: data?.data?.full_name || "",
+        email: data?.data?.email || "",
+        occupation: data?.data?.occupation || "",
+        mobile_no: data?.data?.mobile_no || "",
+        location: data?.data?.location || "",
       });
 
       // Set profile image only if profile_pic exists
-      if (data.profile_pic) {
+      if (data?.data?.profile_pic) {
         // Check if it's already a full URL
-        if (data.profile_pic.startsWith("http")) {
-          setProfileImage(data.profile_pic);
+        if (data?.data?.profile_pic.startsWith("http")) {
+          setProfileImage(data?.data.profile_pic);
         } else {
           // Remove any leading slash from profile_pic and construct URL
-          const cleanPath = data.profile_pic.replace(/^\//, '');
+          const cleanPath = data?.data?.profile_pic.replace(/^\//, '');
           setProfileImage(`${IMAGE_BASE_URL}/${cleanPath}`);
         }
       }

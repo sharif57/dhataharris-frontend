@@ -9,7 +9,7 @@ export default function DoctorProfilePage() {
     const id = params?.id;
 
   const {data} = useStoryDetailsQuery(id)
-  console.log(data , "data");
+  console.log(data?.data , "data");
   return (
     <main className="min-h-screen bg-[#ffeff3] flex items-center justify-center p-4 md:p-8 text-justify">
       <div className="bg-white rounded-3xl shadow-md max-w-5xl w-full p-6 md:p-8">
@@ -17,7 +17,7 @@ export default function DoctorProfilePage() {
           {/* Profile Image */}
           <div className="lg:flex  items-center gap-6 ">
             <img
-              src={data?.image}
+              src={data?.data?.image}
               alt="Dr. Jane Nicholson"
               width={96}
               height={96}
@@ -26,10 +26,10 @@ export default function DoctorProfilePage() {
             />
             <div>
               <h1 className="text-2xl font-semibold text-gray-800 text-center sm:text-left">
-                {data?.author_name}
+                {data?.data?.author_name}
               </h1>
               <p className="text-[#566063] mb-4 text-lg  text-center sm:text-left">
-                {data?.title}
+                {data?.data?.title}
               </p>
             </div>
           </div>
@@ -37,7 +37,7 @@ export default function DoctorProfilePage() {
           {/* Doctor Info */}
           <div className="flex-1 mt-8 w-full sm:w-auto">
             <p className="text-[#2C383C] text-[16px] font-normal leading-relaxed">
-             {data?.description}
+             {data?.data?.description}
             </p>
           </div>
         </div>

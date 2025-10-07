@@ -87,7 +87,7 @@ export default function StoriesSection() {
   }, [isModalOpen])
 
   // Log data for debugging
-  console.log(data, "data")
+  console.log(data?.data, "data=====")
 
   return (
     <section className="w-full bg-[#FFEFF3] py-12 text-justify">
@@ -116,8 +116,8 @@ export default function StoriesSection() {
           <p>Error fetching stories. Please try again later.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {data && data.length > 0 ? (
-              data.slice(0,6).map((story: Story) => (
+            {data && data?.data?.length > 0 ? (
+              data?.data?.slice(0,6).map((story: Story) => (
                 <StoryCard
                   key={story.id}
                   id={story.id.toString()}

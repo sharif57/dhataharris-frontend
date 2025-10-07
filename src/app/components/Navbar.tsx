@@ -58,7 +58,7 @@ export default function Navbar() {
     }
   };
   const IMAGE = process.env.NEXT_PUBLIC_IMAGE;
-  const profileSrc = `${IMAGE}${data?.profile_pic}`;
+  const profileSrc = `${IMAGE}${data?.data?.profile_pic}`;
 
   const handleLogOut = async () => {
     // Implement your logout logic here
