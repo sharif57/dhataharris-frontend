@@ -97,7 +97,7 @@ export default function SearchInput() {
   const handleCreateSession = async () => {
     try {
       const response = await createSession({
-        email: data?.email,
+        email: data?.data?.email,
       }).unwrap();
 
       localStorage.setItem("sessionId", response?.session_id);

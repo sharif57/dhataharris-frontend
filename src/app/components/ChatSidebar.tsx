@@ -34,13 +34,13 @@ export default function ChatSidebar({
   const [createSession] = useCreateSessionMutation();
   const { data } = useUserProfileQuery(undefined);
   // console.log("User Profile Data:", data);
-  const { data: sessionData } = useUserAllSessionsQuery(data?.email);
+  const { data: sessionData } = useUserAllSessionsQuery(data?.data?.email);
   console.log("Session Data:", sessionData);
 
   const handleCreateSession = async () => {
     try {
       const response = await createSession({
-        email: data?.email,
+        email: data?.data?.email,
       }).unwrap();
 
       localStorage.setItem("sessionId", response?.session_id);
@@ -148,14 +148,14 @@ export default function ChatSidebar({
               <div className="p-4 border-t cursor-pointer hover:bg-[#760C2A] hover:text-white  duration-300 border-b border-[#760C2A] flex items-center">
                 <div className="w-8 h-8 rounded-full bg-gray-400 mr-3 overflow-hidden">
                   <Image
-                    src={`${IMAGE}/${data?.profile_pic}`}
+                    src={`${IMAGE}/${data?.data?.profile_pic}`}
                     alt="User avatar"
                     width={32}
                     height={32}
                     className="object-cover"
                   />
                 </div>
-                <span className="text-sm">{data?.full_name}</span>
+                <span className="text-sm">{data?.data?.full_name}</span>
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
@@ -168,7 +168,7 @@ export default function ChatSidebar({
               </DropdownMenuItem>
               <DropdownMenuItem className="">
                 <User />
-                <span>{data?.full_name}</span>
+                <span>{data?.data?.full_name}</span>
               </DropdownMenuItem>
               <DropdownMenuItem className="">
                 <User />

@@ -97,7 +97,7 @@ export default function ChatDetails() {
     try {
       const response = await chatCreate({
         session_id: localStorage.getItem("sessionId"),
-        email: data?.email,
+        email: data?.data?.email,
         message: inputValue,
       }).unwrap();
       setMessages((prev) => [
