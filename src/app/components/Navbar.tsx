@@ -131,7 +131,7 @@ export default function Navbar() {
             </Link>
             <a
               // href="https://www.youtube.com/watch?v=cwtM4hDbLDg&t=45s"
-              href="https://www.youtube.com/@the500thousand/featured"
+              href="https://www.youtube.com/@usvsms"
               target="_blank"
               className={`text-[#727A7C]`}
             >
