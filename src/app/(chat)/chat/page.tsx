@@ -69,7 +69,7 @@ function Home() {
 
   // Handle query parameter, highlight input, clear URL, and trigger API call
   useEffect(() => {
-    if (query && inputRef.current && !isTyping && sessionId && data?.email) {
+    if (query && inputRef.current && !isTyping && sessionId && data?.data?.email) {
       setInputValue(query); // Set input value to query
       inputRef.current.focus(); // Focus the input
       inputRef.current.select(); // Highlight the input text
@@ -117,7 +117,7 @@ function Home() {
       triggerApiCall();
       router.replace(pathname, { scroll: false }); // Clear query from URL
     }
-  }, [query, pathname, router, chatCreate, sessionId, data?.email]);
+  }, [query, pathname, router, chatCreate, sessionId, data?.data?.email]);
 
   useEffect(() => {
     if (chatList && chatList.length > 0) {
