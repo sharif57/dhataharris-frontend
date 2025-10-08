@@ -10,7 +10,7 @@ export default function Footer() {
   if (pathname === "/sign-in") {
     return null;
   }
-  if (pathname === "/forgot-password") {
+  if (pathname === "/forgot-password" || pathname === "/forgetVerify") {
     return null;
   }
   if (pathname === "/signup") {
