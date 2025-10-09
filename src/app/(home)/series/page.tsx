@@ -61,7 +61,7 @@ export default function Series() {
                     {video.title}
                   </h3>
                   <p className="text-sm text-gray-700 leading-snug font-normal">
-                    {video.description.slice(0, 200)}...
+                    {video.description.slice(0, 120)}...
                   </p>
                 </div>
               </article>

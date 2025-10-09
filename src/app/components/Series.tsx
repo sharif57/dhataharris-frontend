@@ -35,6 +35,7 @@ export default function Series() {
   const pathname = usePathname();
 
   const { data } = useSeriesGetQuery(undefined);
+  
 
   return (
     <section className="w-full bg-[#fff3f6] py-12 px-4 md:px-6 lg:px-8">
@@ -74,7 +75,7 @@ export default function Series() {
                     {video.title}
                   </h3>
                   <p className="text-sm text-gray-700 leading-snug font-normal">
-                    {video.description.slice(0, 200)}...
+                    {video.description.slice(0, 120)}...
                   </p>
                 </div>
               </article>
