@@ -26,10 +26,10 @@ export default function DoctorProfilePage() {
             />
             <div>
               <h1 className="text-2xl font-semibold text-gray-800 text-center sm:text-left">
-                {data?.data?.author_name}
+                {data?.data?.title}
               </h1>
               <p className="text-[#566063] mb-4 text-lg  text-center sm:text-left">
-                {data?.data?.title}
+                {data?.data?.author_name}
               </p>
             </div>
           </div>

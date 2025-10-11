@@ -47,8 +47,8 @@ const StoryCard = ({
           className="w-full h-full object-cover"
         />
       </div>
-      <h3 className="font-semibold text-[#2D3748] text-[24px]">{name}</h3>
-      <p className="text-[#566063] text-sm mb-2">{title}</p>
+      <h3 className="font-semibold text-[#2D3748] text-[24px]">{title}</h3>
+      <p className="text-[#566063] text-sm mb-2">{name}</p>
       <p className="text-[#4A5568] text-xs leading-relaxed mb-2">
         {description}
       </p>
