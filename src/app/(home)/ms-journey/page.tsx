@@ -4,15 +4,15 @@ import React from "react";
 export default function page() {
   return (
     <div className="bg-white px-4 text-justify">
-      <section className="w-full pt-16 py-12 md:py-10 mt ">
+      <section className="w-full  py-8  mt ">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
-          <embed
+          {/* <embed
             // src="/Novel therapies in MS Treatments Final (1) (1).pdf"
             src="/pdf2.pdf"
             type="application/pdf"
             className="w-full h-[1000px] "
-          />
+          /> */}
 
           {/* <iframe
             src="/pdf2.pdf#toolbar=0&navpanes=0&scrollbar=0"
@@ -49,7 +49,8 @@ export default function page() {
             <div className="w-full mx-auto md:mx-0 md:ml-auto order-1 md:order-2 ">
               <div className="rounded-lg overflow-hidden ">
                 <Image
-                  src="/doctor.jpg"
+                  // src="/doctor.jpg"
+                  src="/image/Graphic 1.png"
                   alt="MS Vertebral Symptom Correlation Chart"
                   width={500}
                   height={500}
@@ -64,7 +65,8 @@ export default function page() {
             <div className="w-full mx-auto md:mx-0 md:ml-auto order-2 md:order-1">
               <div className="rounded-lg overflow-hidden ">
                 <Image
-                  src="/doctor1.png"
+                  // src="/doctor1.png"
+                  src="/image/Health Challenges Infographic.png"
                   alt="MS Vertebral Symptom Correlation Chart"
                   width={500}
                   height={500}
@@ -77,7 +79,7 @@ export default function page() {
             {/* Journey Text Content */}
             <div className="space-y-6 order-1 md:order-2">
               <h2 className="text-3xl md:text-4xl font-bold text-[#2D3748] leading-tight">
-                A Life of Health Challenges Before MS
+                A Life of Health Challenges
                 <span className="text-[#760C2A]"> Before MS </span>(1975–2004)
               </h2>
 
@@ -129,7 +131,8 @@ export default function page() {
             <div className="w-full mx-auto md:mx-0 md:ml-auto order-1 md:order-2 ">
               <div className="rounded-lg overflow-hidden ">
                 <Image
-                  src="/doctor2.png"
+                  // src="/doctor2.png"
+                  src="/image/MS Symptoms.png"
                   alt="MS Vertebral Symptom Correlation Chart"
                   width={500}
                   height={500}
@@ -144,7 +147,8 @@ export default function page() {
             <div className="w-full mx-auto md:mx-0 md:ml-auto order-2 md:order-1">
               <div className="rounded-lg overflow-hidden ">
                 <Image
-                  src="/doctor3.png"
+                  // src="/doctor3.png"
+                  src="/image/Myelin.png"
                   alt="MS Vertebral Symptom Correlation Chart"
                   width={500}
                   height={500}
@@ -195,12 +199,12 @@ export default function page() {
                   neuralgia and bone loss in my mouth. I had to undergo
                   extensive dental extractions and implant surgeries.
                 </li>
-                <li>
+                {/* <li>
                   In 2011, I had my anergy panel tested—it showed almost no
                   immune response to Candida. My body couldn’t recognize or
                   fight the fungus, pointing to a critically suppressed immune
                   system.
-                </li>
+                </li> */}
               </ul>
             </div>
 
@@ -223,7 +227,8 @@ export default function page() {
             <div className="w-full mx-auto md:mx-0 md:ml-auto order-2 md:order-1">
               <div className="rounded-lg overflow-hidden ">
                 <Image
-                  src="/doctor3.png"
+                  // src="/doctor3.png"
+                  src="/image/Unwanted.jpg"
                   alt="MS Vertebral Symptom Correlation Chart"
                   width={500}
                   height={500}
@@ -260,6 +265,36 @@ export default function page() {
               </ul>
             </div>
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mt-[100px]">
+            {/* Journey Text Content */}
+            <div className="space-y-6 order-2 md:order-1">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#2D3748] leading-tight">
+                A Turning Point: Dental Implants  
+                <span className="text-[#760C2A]"> and Symptom Relief</span>{" "}
+                (2012)
+              </h2>
+
+              <ul className="space-y-4 list-disc text-[#2D3748] text-base leading-relaxed">
+                <li>
+                  In 2012, after receiving dental implants, my brain fog and numbness lifted almost immediately. I began to suspect that infections in the mouth and jaw—especially involving Candida and H. pylori—might have been key players in my disease.
+                </li>
+              </ul>
+            </div>
+
+            {/* Medical Chart Image */}
+            <div className="w-full mx-auto md:mx-0 md:ml-auto order-1 md:order-2 ">
+              <div className="rounded-lg overflow-hidden ">
+                <Image
+                  src="/image/Graphic 3.png"
+                  alt="MS Vertebral Symptom Correlation Chart"
+                  width={500}
+                  height={500}
+                  className="w-full h-auto object-contain"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
           <div className="mt-[100px]">
             <main className=" py-8  md:py-12   ">
               {/* Important Clues and Questions */}
@@ -288,7 +323,7 @@ export default function page() {
               </section>
 
               {/* Key Documents Available */}
-              <section className="mb-16">
+              {/* <section className="mb-16">
                 <h2 className="text-2xl md:text-[40px] font-bold mb-4">
                   Key Documents Available{" "}
                   <span className="text-[#760C2A]">for Review</span>
@@ -318,7 +353,7 @@ export default function page() {
                     </ul>
                   </li>
                 </ul>
-              </section>
+              </section> */}
 
               {/* Conclusion */}
               <section>

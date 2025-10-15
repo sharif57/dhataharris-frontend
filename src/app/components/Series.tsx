@@ -42,7 +42,7 @@ export default function Series() {
       <div className="container mx-auto">
         <div className="flex justify-between items-center mb-14">
           <h2 className="text-xl md:text-5xl font-bold text-[#0f172a]">
-            Your Youtube Series
+            Web Series
           </h2>
 
           {pathname !== "/news" && (

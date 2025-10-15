@@ -59,7 +59,7 @@ export default function Footer() {
                 Blog
               </Link>
               <Link href="/news" className="text-gray-600 hover:text-gray-900">
-                Ms News
+                MS News
               </Link>
             </div>
           </div>
@@ -84,13 +84,22 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <h3 className="font-medium">Contact</h3>
             <div className="flex flex-col gap-2">
-              <Link href="#" className="text-gray-600 hover:text-gray-900">
-                GitHub
+              <Link href='https://www.tiktok.com/@theenitiativegroup' className="text-gray-600 hover:text-gray-900">
+                TikTok
               </Link>
-              <Link href="#" className="text-gray-600 hover:text-gray-900">
-                Twitter
+              <Link href='https://www.facebook.com/TheEnitiativeGroupInc' className="text-gray-600 hover:text-gray-900">
+                Facebook
               </Link>
-              <Link href="#" className="text-gray-600 hover:text-gray-900">
+              <Link href='https://www.instagram.com/TheEnitiativeGroupInc' className="text-gray-600 hover:text-gray-900">
+                Instagram
+              </Link>
+              <Link href='https://www.pinterest.com/theenitiativegroupinc' className="text-gray-600 hover:text-gray-900">
+                Pinterest
+              </Link>
+              <Link href="https://x.com/TheEnitiative" className="text-gray-600 hover:text-gray-900">
+                X
+              </Link>
+              <Link href="https://www.linkedin.com/company/theenitiativegroupinc" className="text-gray-600 hover:text-gray-900">
                 LinkedIn
               </Link>
             </div>
